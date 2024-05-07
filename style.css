@@ -1,7 +1,7 @@
 /* Set the color, background color, and font family for the body */
 body {
-  color: #D6FFEE;
-  background-color: #668B7C;
+  color: #668B7C;
+  background-color: #FFDAB9;
   font-family: 'Trade Gothic LT W01 Roman', Serif;
   margin: 0;
   display: flex;
@@ -65,7 +65,7 @@ body {
 
 /* Styling for links in the content section */
 #content a {
-  color: #D6FFEE;
+  color: #668B7C;
   transition: color 0.2s;
 }
 
@@ -85,16 +85,16 @@ body {
 
 /* Styling for social media links */
 .social-media a {
-  color: #D6FFEE;
+  color: #668B7C;
   text-decoration: none;
   padding: 0;
   border-radius: 5px;
-  background-color: #668B7C;
+  background-color: #FFDAB9;
 }
 
 /* Styling for social media links on hover */
 .social-media a:hover {
-  color: #D6FFEE;
+  color: #668B7C;
 }
 
 /* Styling for social media icons */
