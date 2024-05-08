@@ -84,7 +84,7 @@ body {
 /* Social media section styling */
 .social-media {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   max-width: 650px;
   margin: 20px auto 5%;
   padding: 20px;
