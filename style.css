@@ -1,61 +1,63 @@
-/* Set the color, background color, and font family for the body */
+/* Custom @font-face declaration */
+@font-face {
+  font-family: 'Georgia;
+  src: url('path/to/Georgia.woff2') format('woff2'),
+       url('path/to/Georgia.woff') format('woff');
+  font-display: swap; /* Ensures text remains visible during webfont load */
+}
+
+/* Base styles */
 body {
   color: #668B7C;
   background-color: #FFDAB9;
   font-family: 'Georgia', Serif;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 75vh;
 }
 
-/* Responsive layout for small screens */
+/* Responsive layout adjustments */
 @media (max-width: 480px) {
   body {
-      font-size: 16px;
+    font-size: 16px;
+    margin: 0;
   }
   #content {
-      padding: 20px;
+    padding: 0;
   }
 }
 
-/* Responsive layout for medium screens */
+/* For medium screens */
 @media (min-width: 768px) {
   body {
-      font-size: 20px;
+    font-size: 20px;
   }
 }
 
-/* Responsive layout for large screens */
+/* For large screens */
 @media (min-width: 992px) {
   body {
-      font-size: 24px;
+    font-size: 24px;
   }
 }
 
-/* Responsive layout for extra large screens */
+/* For extra large screens */
 @media (min-width: 1200px) {
   body {
-      font-size: 28px;
+    font-size: 28px;
   }
 }
 
-/* Styling for the content section */
+/* Content section styling */
 #content {
   max-width: 650px;
   padding: 20px;
-  text-align: center; /* Center text horizontally */
+  margin: 0 auto;
   margin-top: 5%;
 }
 
-/* Styling for the heading in the content section */
 #content h1 {
   font-size: 200%;
   margin-bottom: 10px;
 }
 
-/* Styling for the paragraphs in the content section */
 #content p {
   font-size: 1.75rem;
   line-height: 1.5;
@@ -63,27 +65,25 @@ body {
   letter-spacing: 0.1em;
 }
 
-/* Styling for links in the content section */
 #content a {
   color: #668B7C;
   transition: color 0.2s;
 }
 
-/* Styling for links on hover in the content section */
 #content a:hover {
-  color: #D6FFEE;
+  color: #B66868;
 }
 
-/* Styling for the social media icons section */
+/* Social media section styling */
 .social-media {
   display: flex;
   justify-content: space-between;
   max-width: 650px;
+  margin: 20px auto 5%;
   padding: 20px;
   margin-bottom: 15%;
 }
 
-/* Styling for social media links */
 .social-media a {
   color: #668B7C;
   text-decoration: none;
@@ -92,12 +92,10 @@ body {
   background-color: #FFDAB9;
 }
 
-/* Styling for social media links on hover */
 .social-media a:hover {
-  color: #668B7C;
+  color: #B66868;
 }
 
-/* Styling for social media icons */
 .social-media i {
   margin-right: 10px;
   font-size: 120%;
