@@ -86,7 +86,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   max-width: 650px;
-  margin: 20px 0px 5%;
+  margin: 20px auto 5%;
   padding: 20px;
   margin-bottom: 15%;
 }
