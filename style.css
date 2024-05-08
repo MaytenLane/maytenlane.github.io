@@ -11,6 +11,8 @@ body {
   color: #668B7C;
   background-color: #FFDAB9;
   font-family: 'Georgia', Serif;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Responsive layout adjustments */
