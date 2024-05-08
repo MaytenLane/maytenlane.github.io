@@ -7,7 +7,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  height: 50vh;
+  height: 75vh;
 }
 
 /* Responsive layout for small screens */
