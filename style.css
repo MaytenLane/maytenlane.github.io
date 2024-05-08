@@ -12,6 +12,7 @@ body {
   background-color: #FFDAB9;
   font-family: 'Georgia', Serif;
   align-items: center;
+  text-align: center;
   justify-content: center;
 }
 
@@ -53,6 +54,9 @@ body {
   padding: 20px;
   margin: 0 auto;
   margin-top: 5%;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 }
 
 #content h1 {
@@ -65,6 +69,7 @@ body {
   line-height: 1.5;
   font-weight: 410;
   letter-spacing: 0.1em;
+  text-align: center;
 }
 
 #content a {
