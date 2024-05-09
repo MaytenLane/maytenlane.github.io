@@ -9,6 +9,7 @@
   <meta name="keywords" content="Mayten Lane, Alexander Tibbets, Alex Tibbets, Janicke Rich, startups, media technology, marketing, business, Berkeley, California, NYU, New York University, go-to-market, customer lifecycle, community development, business operations">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.maytenlane.com">
+  <link rel="preconnect" href="https://www.maytenlane.com">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Mayten Lane | A startup shop for growing technology companies">
@@ -29,6 +30,13 @@
   <noscript>
     <link href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" rel="stylesheet">
   </noscript>
+
+  <!-- Redirects -->
+  <script>
+    if (location.protocol !== 'https:' && (location.hostname === 'maytenlane.com' || location.hostname === 'www.maytenlane.com')) {
+      location.href = 'https://www.maytenlane.com' + location.pathname + location.search;
+    }
+  </script>
 
   <!-- Google Tag Manager -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZDX379JWH"></script>
