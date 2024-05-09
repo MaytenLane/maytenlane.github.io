@@ -64,6 +64,9 @@ body {
   max-width: 650px;
   padding: 20px;
   margin: 5% auto 0;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 }
 
 #content h1 {
@@ -93,8 +96,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   max-width: 650px;
-  margin: 20px auto 5%;
-  margin-bottom: 15%;
+  margin: 20px auto 15%;
   padding: 20px;
 }
 
