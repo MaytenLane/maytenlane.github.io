@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /private/
+Disallow: /backup/
+Disallow: /test/
+
+Sitemap: https://www.maytenlane.com/sitemap.xml
