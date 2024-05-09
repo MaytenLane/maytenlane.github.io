@@ -1,6 +1,18 @@
+/* Define CSS variables for colors and font sizes */
+:root {
+  --primary-color: #668B7C;
+  --secondary-color: #B66868;
+  --background-color: #FFDAB9;
+  --font-family: 'Georgia', Serif;
+  --base-font-size: 16px;
+  --medium-font-size: 20px;
+  --large-font-size: 24px;
+  --xlarge-font-size: 28px;
+}
+
 /* Custom @font-face declaration */
 @font-face {
-  font-family: 'Georgia;
+  font-family: 'Georgia';
   src: url('path/to/Georgia.woff2') format('woff2'),
        url('path/to/Georgia.woff') format('woff');
   font-display: swap; /* Ensures text remains visible during webfont load */
@@ -8,43 +20,42 @@
 
 /* Base styles */
 body {
-  color: #668B7C;
-  background-color: #FFDAB9;
-  font-family: 'Georgia', Serif;
+  color: var(--primary-color);
+  background-color: var(--background-color);
+  font-family: var(--font-family);
+  display: flex;
   align-items: center;
   text-align: center;
   justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
 /* Responsive layout adjustments */
 @media (max-width: 480px) {
   body {
-    font-size: 16px;
-    margin: 0;
+    font-size: var(--base-font-size);
   }
   #content {
     padding: 0;
   }
 }
 
-/* For medium screens */
 @media (min-width: 768px) {
   body {
-    font-size: 20px;
+    font-size: var(--medium-font-size);
   }
 }
 
-/* For large screens */
 @media (min-width: 992px) {
   body {
-    font-size: 24px;
+    font-size: var(--large-font-size);
   }
 }
 
-/* For extra large screens */
 @media (min-width: 1200px) {
   body {
-    font-size: 28px;
+    font-size: var(--xlarge-font-size);
   }
 }
 
@@ -52,15 +63,11 @@ body {
 #content {
   max-width: 650px;
   padding: 20px;
-  margin: 0 auto;
-  margin-top: 5%;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
+  margin: 5% auto 0;
 }
 
 #content h1 {
-  font-size: 200%;
+  font-size: 2rem;
   margin-bottom: 10px;
 }
 
@@ -69,16 +76,15 @@ body {
   line-height: 1.5;
   font-weight: 410;
   letter-spacing: 0.1em;
-  text-align: center;
 }
 
 #content a {
-  color: #668B7C;
+  color: var(--primary-color);
   transition: color 0.2s;
 }
 
 #content a:hover {
-  color: #B66868;
+  color: var(--secondary-color);
   text-decoration: underline;
 }
 
@@ -87,24 +93,23 @@ body {
   display: flex;
   justify-content: space-evenly;
   max-width: 650px;
-  margin: 20px auto 5%;
+  margin: 20px auto 15%;
   padding: 20px;
-  margin-bottom: 15%;
 }
 
 .social-media a {
-  color: #668B7C;
+  color: var(--primary-color);
   text-decoration: none;
   padding: 0;
   border-radius: 5px;
-  background-color: #FFDAB9;
+  background-color: var(--background-color);
 }
 
 .social-media a:hover {
-  color: #B66868;
+  color: var(--secondary-color);
 }
 
 .social-media i {
   margin-right: 10px;
-  font-size: 120%;
+  font-size: 1.2rem;
 }
