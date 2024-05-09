@@ -62,7 +62,7 @@ body {
 #content h1 {
   font-size: 1.75rem;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
