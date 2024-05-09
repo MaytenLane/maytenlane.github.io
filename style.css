@@ -79,6 +79,7 @@ body {
 
 #content a:hover {
   color: #B66868;
+  font-weight: bold;
 }
 
 /* Social media section styling */
