@@ -2,5 +2,18 @@ User-agent: *
 Disallow: /private/
 Disallow: /backup/
 Disallow: /test/
+Disallow: /cgi-bin/
 
 Sitemap: https://www.maytenlane.com/sitemap.xml
+
+User-agent: Googlebot-Image
+Allow: /Assets/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: *
+Allow: /Assets/
