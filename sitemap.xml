@@ -8,17 +8,22 @@
     <image:image>
       <image:loc>https://www.maytenlane.com/banner.png</image:loc>
       <image:caption>Mayten Lane Banner</image:caption>
-      <image:title>Mayten Lane</image:title>
+      <image:title>Mayten Lane Banner</image:title>
     </image:image>
     <image:image>
       <image:loc>https://www.maytenlane.com/favicon.ico</image:loc>
       <image:caption>Mayten Lane Favicon</image:caption>
-      <image:title>Mayten Lane</image:title>
+      <image:title>Mayten Lane Favicon</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.maytenlane.com/logo.png</image:loc>
+      <image:caption>Mayten Lane Logo</image:caption>
+      <image:title>Mayten Lane Logo</image:title>
     </image:image>
     <image:image>
       <image:loc>https://www.maytenlane.com/Assets/Mayten%20Lane%20%7C%20G%20on%20Clear%20%7C%20500x500.png</image:loc>
-      <image:caption>Mayten Lane Logo</image:caption>
-      <image:title>Mayten Lane Logo</image:title>
+      <image:caption>Mayten Lane Asset</image:caption>
+      <image:title>Mayten Lane Asset</image:title>
     </image:image>
   </url>
 </urlset>
