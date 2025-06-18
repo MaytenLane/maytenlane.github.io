@@ -162,6 +162,7 @@ body {
   color: #B66868;
   background-color: transparent;
   transform: none;
+  text-decoration: none;
 }
 
 .social-media a:focus-visible {
