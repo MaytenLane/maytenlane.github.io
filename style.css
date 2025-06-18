@@ -160,8 +160,8 @@ body {
 .social-media a:hover,
 .social-media a:focus {
   color: #B66868;
-  background-color: rgba(102, 139, 124, 0.1);
-  transform: translateY(-2px);
+  background-color: transparent;
+  transform: none;
 }
 
 .social-media a:focus-visible {
