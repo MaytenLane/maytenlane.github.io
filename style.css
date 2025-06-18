@@ -123,10 +123,10 @@ body {
 
 /* Logo styling with better responsive behavior */
 .logo {
-  height: 40%;
-  width: 40%;
-  max-width: 200px;
-  max-height: 200px;
+  height: 80%;
+  width: 80%;
+  max-width: 400px;
+  max-height: 400px;
   object-fit: contain;
   display: block;
   margin: 0 auto;
