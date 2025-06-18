@@ -1,25 +1,21 @@
-# Block access to specific directories for all user agents
+# robots.txt for maytenlane.com
+# Allow all search engines to crawl the site except for sensitive or non-existent directories
+
 User-agent: *
 Disallow: /private/
 Disallow: /backup/
 Disallow: /test/
 Disallow: /cgi-bin/
 
-# Allow all user agents to access the Assets directory
-User-agent: *
-Allow: /Assets/
+# Allow crawling of all public assets
+Allow: /assets/
+Allow: /assets/icons/
+Allow: /assets/logos/
+Allow: /assets/banners/
 
-# Allow Googlebot to access the entire site
-User-agent: Googlebot
-Allow: /
+# Explicitly allow main pages
+Allow: /index.html
+Allow: /404.html
 
-# Allow Googlebot-Image to access the Assets directory
-User-agent: Googlebot-Image
-Allow: /Assets/
-
-# Allow Bingbot to access the entire site
-User-agent: Bingbot
-Allow: /
-
-# Sitemap location
+# Sitemap reference
 Sitemap: https://www.maytenlane.com/sitemap.xml

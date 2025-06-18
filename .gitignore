@@ -1,0 +1,46 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Node/npm (if used in future)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+
+# Logs
+*.log
+
+# Build and optimization outputs
+*.min.css
+*.min.js
+*.map
+*.tmp
+*.bak
+
+# Test and report outputs
+performance-test.sh.log
+*.report.html
+*.report.json
+
+# System files
+Icon?
+
+# Backup files
+*~
+*.swp
+*.swo
+
+# Ignore optimization reports (if not to be tracked)
+OPTIMIZATION_REPORT.md 

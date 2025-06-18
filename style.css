@@ -1,54 +1,76 @@
-/* Custom @font-face declaration */
-@font-face {
+/* Optimized CSS for Mayten Lane - Enhanced for performance and accessibility */
+
+/* Remove unused font-face declaration that references non-existent files */
+/* @font-face {
   font-family: 'Georgia';
   src: url('path/to/Georgia.woff2') format('woff2'),
        url('path/to/Georgia.woff') format('woff');
-  font-display: swap; /* Ensures text remains visible during webfont load */
-}
+  font-display: swap;
+} */
 
-/* Base styles */
+/* Base styles with improved accessibility */
 body {
   color: #668B7C;
   background-color: #FFDAB9;
-  font-family: 'Georgia', Serif;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 18px; /* Improved base font size for accessibility */
+  line-height: 1.6; /* Better line height for readability */
   align-items: center;
   text-align: center;
   justify-content: center;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Responsive layout adjustments */
+/* Responsive layout adjustments with better breakpoints */
 @media (max-width: 480px) {
   body {
     font-size: 16px;
     margin: 0;
   }
   #content {
-    padding: 0;
+    padding: 15px;
+    margin-top: 2%;
+  }
+  .social-media {
+    margin-bottom: 10%;
   }
 }
 
 /* For medium screens */
-@media (min-width: 768px) {
+@media (min-width: 481px) and (max-width: 767px) {
   body {
-    font-size: 20px;
+    font-size: 18px;
+  }
+  #content {
+    margin-top: 3%;
   }
 }
 
 /* For large screens */
-@media (min-width: 992px) {
+@media (min-width: 768px) and (max-width: 991px) {
   body {
-    font-size: 24px;
+    font-size: 20px;
+  }
+  #content {
+    margin-top: 4%;
   }
 }
 
 /* For extra large screens */
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   body {
-    font-size: 28px;
+    font-size: 22px;
+  }
+  #content {
+    margin-top: 5%;
   }
 }
 
-/* Content section styling */
+/* Content section styling with improved accessibility */
 #content {
   max-width: 650px;
   padding: 20px;
@@ -57,13 +79,18 @@ body {
   align-items: center;
   text-align: center;
   justify-content: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 #content h1 {
   font-size: 1.75rem;
-  line-height: 1.5;
+  line-height: 1.4;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  margin-top: 0;
+  color: #668B7C;
 }
 
 #content p {
@@ -71,19 +98,41 @@ body {
   line-height: 1.5;
   font-weight: 400;
   text-align: center;
+  margin: 10px 0;
+  color: #668B7C;
 }
 
 #content a {
   color: #668B7C;
-  transition: color 0.2s;
+  transition: color 0.3s ease;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
 }
 
-#content a:hover {
+#content a:hover,
+#content a:focus {
   color: #B66868;
-  text-decoration: underline;
+  border-bottom-color: #B66868;
+  outline: none;
 }
 
-/* Social media section styling */
+#content a:focus-visible {
+  outline: 2px solid #B66868;
+  outline-offset: 2px;
+}
+
+/* Logo styling with better responsive behavior */
+.logo {
+  height: 40%;
+  width: 40%;
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Social media section styling with improved accessibility */
 .social-media {
   display: flex;
   justify-content: space-evenly;
@@ -91,21 +140,98 @@ body {
   margin: 20px auto 5%;
   padding: 20px;
   margin-bottom: 15%;
+  gap: 20px; /* Better spacing between icons */
 }
 
 .social-media a {
   color: #668B7C;
   text-decoration: none;
-  padding: 0;
+  padding: 10px;
   border-radius: 5px;
-  background-color: #FFDAB9;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px; /* Minimum touch target size for accessibility */
+  min-height: 44px;
 }
 
-.social-media a:hover {
+.social-media a:hover,
+.social-media a:focus {
   color: #B66868;
+  background-color: rgba(102, 139, 124, 0.1);
+  transform: translateY(-2px);
+}
+
+.social-media a:focus-visible {
+  outline: 2px solid #B66868;
+  outline-offset: 2px;
 }
 
 .social-media i {
-  margin-right: 10px;
   font-size: 2rem;
+  display: block;
+}
+
+/* Print styles for better accessibility */
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+    font-size: 12pt;
+  }
+  
+  .social-media {
+    display: none;
+  }
+  
+  #content {
+    margin-top: 0;
+    padding: 0;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  body {
+    color: #2d4a3e;
+    background-color: #fff5e6;
+  }
+  
+  #content a,
+  .social-media a {
+    color: #2d4a3e;
+  }
+  
+  #content a:hover,
+  #content a:focus,
+  .social-media a:hover,
+  .social-media a:focus {
+    color: #8b2d2d;
+  }
+}
+
+/* Reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .social-media a:hover {
+    transform: none;
+  }
+}
+
+.copyright {
+  font-family: inherit;
+  font-size: 80%;
+  color: #668B7C;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
 }
