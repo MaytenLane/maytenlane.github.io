@@ -170,6 +170,7 @@ body {
   background-color: transparent;
   transform: none;
   text-decoration: none;
+  border-bottom: none;
 }
 
 /* FOCUS-VISIBLE STYLES FOR SOCIAL MEDIA KEYBOARD NAVIGATION */
