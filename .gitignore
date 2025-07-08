@@ -1,46 +1,149 @@
-# macOS system files
+# GIT IGNORE FILE FOR MAYTEN LANE WEBSITE
+# THIS FILE SPECIFIES WHICH FILES AND DIRECTORIES GIT SHOULD IGNORE
+# LAST UPDATED: 2025-01-27
+# OPTIMIZED FOR STATIC SITE DEVELOPMENT
+
+# OPERATING SYSTEM GENERATED FILES
+# MACOS SYSTEM FILES
 .DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
+.DS_Store?
 ._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# Node/npm (if used in future)
+# EDITOR AND IDE FILES
+# VISUAL STUDIO CODE
+.vscode/
+*.code-workspace
+
+# SUBLIME TEXT
+*.sublime-project
+*.sublime-workspace
+
+# VIM
+*.swp
+*.swo
+*~
+
+# EMACS
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ATOM
+.atom/
+
+# WEBSTORM/INTELLIJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# TEMPORARY FILES
+# LOG FILES
+*.log
+logs/
+log/
+
+# TEMP FILES
+*.tmp
+*.temp
+temp/
+tmp/
+
+# BACKUP FILES
+*.bak
+*.backup
+*.old
+backup/
+backups/
+
+# DEVELOPMENT AND BUILD FILES
+# NODE.JS DEPENDENCIES
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Editor directories and files
-.vscode/
-.idea/
-*.sublime-workspace
-*.sublime-project
-*.code-workspace
+# PACKAGE MANAGER FILES
+package-lock.json
+yarn.lock
 
-# Logs
-*.log
+# BUILD OUTPUTS
+dist/
+build/
+out/
 
-# Build and optimization outputs
-*.min.css
-*.min.js
-*.map
-*.tmp
-*.bak
+# ENVIRONMENT FILES
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Test and report outputs
-performance-test.sh.log
-*.report.html
-*.report.json
+# TEST FILES AND DIRECTORIES
+# REMOVED TEST FOLDER REFERENCES AS REQUESTED
+# tests/
+# test/
+# __tests__/
+# *.test.js
+# *.spec.js
 
-# System files
-Icon?
+# PERFORMANCE AND ANALYSIS FILES
+# LIGHTHOUSE REPORTS
+lighthouse-report.html
+lighthouse-report.json
 
-# Backup files
-*~
-*.swp
-*.swo
+# WEBPAGE TEST RESULTS
+webpagetest-results/
 
-# Ignore optimization reports (if not to be tracked)
-OPTIMIZATION_REPORT.md 
+# PERFORMANCE TEST OUTPUTS
+performance-results/
+speed-test-results/
+
+# CLOUDFLARE AND HOSTING FILES
+# CLOUDFLARE CACHE
+.cf-cache/
+
+# HOSTING CONFIGURATION BACKUPS
+hosting-config-backup/
+
+# SECURITY AND SENSITIVE FILES
+# PRIVATE KEYS AND CERTIFICATES
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# API KEYS AND SECRETS
+secrets/
+secrets.json
+api-keys.txt
+
+# DATABASE FILES
+*.db
+*.sqlite
+*.sqlite3
+
+# COMPRESSED FILES
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# DOCUMENTATION DRAFTS
+docs/drafts/
+documentation/drafts/
+
+# OLD VERSIONS AND ARCHIVES
+old/
+archive/
+archives/ 

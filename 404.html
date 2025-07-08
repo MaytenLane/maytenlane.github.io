@@ -1,56 +1,144 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page Not Found | Mayten Lane</title>
   <meta name="description" content="The page you are looking for does not exist. Return to Mayten Lane, a startup shop for growing technology companies.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://www.maytenlane.com/404.html">
-  <link rel="shortcut icon" type="image/x-icon" href="/assets/icons/favicon.ico">
-  <link rel="apple-touch-icon" href="/assets/logos/Mayten%20Lane%20%7C%20G%20on%20P%20%7C%20200x200.png">
-  <meta name="theme-color" content="#668B7C">
-  <meta property="og:title" content="404 Page Not Found | Mayten Lane">
-  <meta property="og:description" content="The page you are looking for does not exist. Return to Mayten Lane, a startup shop for growing technology companies.">
+  <link rel="preconnect" href="https://www.maytenlane.com">
+  <link rel="dns-prefetch" href="https://use.fontawesome.com">
+
+  <!-- OPEN GRAPH META TAGS FOR SOCIAL MEDIA SHARING -->
+  <meta property="og:title" content="Page Not Found | Mayten Lane">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.maytenlane.com/404.html">
+  <meta property="og:description" content="The page you're looking for doesn't exist. Return to Mayten Lane's homepage.">
   <meta property="og:image" content="https://www.maytenlane.com/assets/banners/banner.png">
+  <meta property="og:site_name" content="Mayten Lane">
+
+  <!-- TWITTER CARD META TAGS FOR TWITTER SHARING -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="404 Page Not Found | Mayten Lane">
-  <meta name="twitter:description" content="The page you are looking for does not exist. Return to Mayten Lane, a startup shop for growing technology companies.">
+  <meta name="twitter:title" content="Page Not Found | Mayten Lane">
+  <meta name="twitter:description" content="The page you're looking for doesn't exist. Return to Mayten Lane's homepage.">
   <meta name="twitter:image" content="https://www.maytenlane.com/assets/banners/banner.png">
-  <!-- Critical CSS inline for faster rendering -->
+
+  <!-- ADDITIONAL SEO AND MOBILE OPTIMIZATION META TAGS -->
+  <meta name="theme-color" content="#668B7C">
+  <meta name="msapplication-TileColor" content="#668B7C">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <!-- FAVICON AND APP ICONS -->
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/logos/Mayten%20Lane%20%7C%20G%20on%20P%20%7C%20200x200.png">
+  
+  <!-- CRITICAL CSS INLINED FOR FASTER ABOVE-THE-FOLD RENDERING -->
   <style>
-    body {color:#668B7C;background-color:#FFDAB9;font-family:'Georgia','Times New Roman',serif;font-size:18px;line-height:1.6;align-items:center;text-align:center;justify-content:center;margin:0;padding:0;min-height:100vh;display:flex;flex-direction:column}
-    #content{max-width:650px;padding:20px;margin:0 auto;margin-top:5%;align-items:center;text-align:center;justify-content:center;flex:1;display:flex;flex-direction:column}
-    #content h1{font-size:3rem;line-height:1.4;font-weight:bold;margin-bottom:15px;margin-top:0;color:#668B7C}
-    #content p{font-size:1.5rem;line-height:1.5;font-weight:400;text-align:center;margin:10px 0;color:#668B7C}
-    #content a{color:#668B7C;transition:color .3s ease;text-decoration:none;border-bottom:1px solid transparent}
-    #content a:hover,#content a:focus{color:#B66868;border-bottom-color:#B66868;outline:none}
-    #content a:focus-visible{outline:2px solid #B66868;outline-offset:2px}
+    body {
+      color: #668B7C;
+      background-color: #FFDAB9;
+      font-family: 'Georgia', Serif;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+    }
+    #content {
+      max-width: 650px;
+      padding: 20px;
+      margin: 0 auto;
+      margin-top: 5%;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+    }
+    .logo {
+      height: 80%;
+      width: 80%;
+      max-width: 400px;
+    }
   </style>
-  <!-- Non-critical CSS loaded asynchronously -->
-  <link rel="stylesheet" href="/style.min.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="/style.min.css"></noscript>
+  
+  <!-- NON-CRITICAL CSS LOADED ASYNCHRONOUSLY FOR BETTER PERFORMANCE -->
+  <link rel="stylesheet" href="/style.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/style.css"></noscript>
+  
+  <!-- FONTAWESOME ICONS LOADED WITH PERFORMANCE OPTIMIZATION -->
+  <link href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" rel="stylesheet">
+  </noscript>
+
+  <!-- HTTPS ENFORCEMENT SCRIPT FOR SECURITY -->
+  <script>
+    if (location.protocol !== 'https:' && (location.hostname === 'maytenlane.com' || location.hostname === 'www.maytenlane.com')) {
+      location.href = 'https://www.maytenlane.com' + location.pathname + location.search;
+    }
+  </script>
 </head>
 
 <body>
   <div id="content">
-    <main role="main" aria-label="404 page main content">
-      <h1>404</h1>
-      <p>Page not found.</p> 
-      <p>Return to <a href="https://www.maytenlane.com" title="Mayten Lane - A startup shop for growing technology companies">www.maytenlane.com</a> if you like.</p>
+    <!-- MAIN LOGO HEADER SECTION -->
+    <header>
+      <img src="assets/logos/Mayten%20Lane%20%7C%20G%20on%20Clear%20%7C%20500x500.png" 
+           alt="Mayten Lane logo - A startup shop for growing technology companies" 
+           title="Mayten Lane" 
+           class="logo" 
+           height="400" 
+           width="400"
+           loading="eager">
+    </header>
+
+    <!-- MAIN CONTENT SECTION WITH 404 ERROR MESSAGE -->
+    <main role="main">
+      <br>
+      <h1>Page Not Found</h1>
+      <p>The page you're looking for doesn't exist.</p>
+      <p><a href="/" title="Return to Mayten Lane homepage">Return to homepage</a></p>
+      <!-- SOCIAL MEDIA CONTACT LINKS -->
+      <div class="social-media">
+        <a href="mailto:alexander.tibbets@gmail.com?subject=Let's%20talk%20%7C%20Mayten%20Lane" 
+           target="_blank" 
+           title="Email Alexander Tibbets about Mayten Lane" 
+           rel="noopener noreferrer"
+           aria-label="Send email to Alexander Tibbets">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/maytenlane" 
+           target="_blank" 
+           title="Connect with Mayten Lane on LinkedIn" 
+           rel="noopener noreferrer"
+           aria-label="Visit Mayten Lane LinkedIn page">
+          <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.reddit.com/r/MaytenLane" 
+           target="_blank" 
+           title="Join Mayten Lane community on Reddit" 
+           rel="noopener noreferrer"
+           aria-label="Visit Mayten Lane Reddit community">
+          <i class="fa-brands fa-reddit-alien" aria-hidden="true"></i>
+        </a>
+      </div>
     </main>
   </div>
-  <div class="copyright">© 2025&nbsp;&nbsp;&nbsp;Mayten Lane&nbsp;&nbsp;&nbsp;Berkeley</div>
-  <!-- Structured data for error page -->
+
+  <!-- FOOTER SECTION WITH COPYRIGHT INFORMATION -->
+  <footer role="contentinfo">
+    <div class="copyright">© 2025&nbsp;&nbsp;&nbsp;Mayten Lane&nbsp;&nbsp;&nbsp;Berkeley</div>
+  </footer>
+
+  <!-- STRUCTURED DATA FOR SEARCH ENGINES AND RICH SNIPPETS -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "404 Page Not Found | Mayten Lane",
-    "description": "The page you are looking for does not exist. Return to Mayten Lane, a startup shop for growing technology companies.",
+    "name": "Page Not Found",
     "url": "https://www.maytenlane.com/404.html",
+    "description": "The page you're looking for doesn't exist. Return to Mayten Lane's homepage.",
     "isPartOf": {
       "@type": "WebSite",
       "name": "Mayten Lane",

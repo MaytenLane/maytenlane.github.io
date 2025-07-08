@@ -1,6 +1,6 @@
-/* Optimized CSS for Mayten Lane - Enhanced for performance and accessibility */
+/* OPTIMIZED CSS FOR MAYTEN LANE - ENHANCED FOR PERFORMANCE AND ACCESSIBILITY */
 
-/* Remove unused font-face declaration that references non-existent files */
+/* REMOVED UNUSED FONT-FACE DECLARATION THAT REFERENCES NON-EXISTENT FILES */
 /* @font-face {
   font-family: 'Georgia';
   src: url('path/to/Georgia.woff2') format('woff2'),
@@ -8,13 +8,13 @@
   font-display: swap;
 } */
 
-/* Base styles with improved accessibility */
+/* BASE STYLES WITH IMPROVED ACCESSIBILITY AND READABILITY */
 body {
   color: #668B7C;
   background-color: #FFDAB9;
   font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 18px; /* Improved base font size for accessibility */
-  line-height: 1.6; /* Better line height for readability */
+  font-size: 18px; /* IMPROVED BASE FONT SIZE FOR WCAG AA COMPLIANCE */
+  line-height: 1.6; /* BETTER LINE HEIGHT FOR IMPROVED READABILITY */
   align-items: center;
   text-align: center;
   justify-content: center;
@@ -25,7 +25,7 @@ body {
   flex-direction: column;
 }
 
-/* Responsive layout adjustments with better breakpoints */
+/* RESPONSIVE LAYOUT ADJUSTMENTS WITH OPTIMIZED BREAKPOINTS */
 @media (max-width: 480px) {
   body {
     font-size: 16px;
@@ -40,7 +40,7 @@ body {
   }
 }
 
-/* For medium screens */
+/* MEDIUM SCREEN RESPONSIVE DESIGN */
 @media (min-width: 481px) and (max-width: 767px) {
   body {
     font-size: 18px;
@@ -50,7 +50,7 @@ body {
   }
 }
 
-/* For large screens */
+/* LARGE SCREEN RESPONSIVE DESIGN */
 @media (min-width: 768px) and (max-width: 991px) {
   body {
     font-size: 20px;
@@ -60,7 +60,7 @@ body {
   }
 }
 
-/* For extra large screens */
+/* EXTRA LARGE SCREEN RESPONSIVE DESIGN */
 @media (min-width: 992px) {
   body {
     font-size: 22px;
@@ -70,7 +70,7 @@ body {
   }
 }
 
-/* Content section styling with improved accessibility */
+/* MAIN CONTENT SECTION STYLING WITH ACCESSIBILITY IMPROVEMENTS */
 #content {
   max-width: 650px;
   padding: 20px;
@@ -84,6 +84,7 @@ body {
   flex-direction: column;
 }
 
+/* HEADING STYLES WITH OPTIMIZED TYPOGRAPHY */
 #content h1 {
   font-size: 1.75rem;
   line-height: 1.4;
@@ -93,6 +94,7 @@ body {
   color: #668B7C;
 }
 
+/* PARAGRAPH STYLES WITH CONSISTENT SPACING */
 #content p {
   font-size: 1.75rem;
   line-height: 1.5;
@@ -102,6 +104,7 @@ body {
   color: #668B7C;
 }
 
+/* LINK STYLES WITH SMOOTH TRANSITIONS AND ACCESSIBILITY */
 #content a {
   color: #668B7C;
   transition: color 0.3s ease;
@@ -109,6 +112,7 @@ body {
   border-bottom: 1px solid transparent;
 }
 
+/* LINK HOVER AND FOCUS STATES FOR BETTER UX */
 #content a:hover,
 #content a:focus {
   color: #B66868;
@@ -116,12 +120,13 @@ body {
   outline: none;
 }
 
+/* FOCUS-VISIBLE STYLES FOR KEYBOARD NAVIGATION */
 #content a:focus-visible {
   outline: 2px solid #B66868;
   outline-offset: 2px;
 }
 
-/* Logo styling with better responsive behavior */
+/* LOGO STYLING WITH RESPONSIVE BEHAVIOR AND OPTIMIZED SIZING */
 .logo {
   height: 80%;
   width: 80%;
@@ -132,7 +137,7 @@ body {
   margin: 0 auto;
 }
 
-/* Social media section styling with improved accessibility */
+/* SOCIAL MEDIA SECTION STYLING WITH ACCESSIBILITY FEATURES */
 .social-media {
   display: flex;
   justify-content: space-evenly;
@@ -140,9 +145,10 @@ body {
   margin: 20px auto 5%;
   padding: 20px;
   margin-bottom: 15%;
-  gap: 20px; /* Better spacing between icons */
+  gap: 20px; /* IMPROVED SPACING BETWEEN ICONS */
 }
 
+/* SOCIAL MEDIA LINK STYLES WITH TOUCH TARGET OPTIMIZATION */
 .social-media a {
   color: #668B7C;
   text-decoration: none;
@@ -153,10 +159,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px; /* Minimum touch target size for accessibility */
+  min-width: 44px; /* MINIMUM TOUCH TARGET SIZE FOR ACCESSIBILITY */
   min-height: 44px;
 }
 
+/* SOCIAL MEDIA HOVER AND FOCUS STATES - SIMPLIFIED FOR CLEAN UX */
 .social-media a:hover,
 .social-media a:focus {
   color: #B66868;
@@ -165,17 +172,29 @@ body {
   text-decoration: none;
 }
 
+/* FOCUS-VISIBLE STYLES FOR SOCIAL MEDIA KEYBOARD NAVIGATION */
 .social-media a:focus-visible {
   outline: 2px solid #B66868;
   outline-offset: 2px;
 }
 
+/* SOCIAL MEDIA ICON STYLING */
 .social-media i {
   font-size: 2rem;
   display: block;
 }
 
-/* Print styles for better accessibility */
+/* COPYRIGHT TEXT STYLING - ALWAYS 20% SMALLER THAN BODY TEXT */
+.copyright {
+  font-family: inherit;
+  font-size: 0.8em;
+  color: #668B7C;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* PRINT STYLES FOR BETTER ACCESSIBILITY AND USABILITY */
 @media print {
   body {
     background-color: white !important;
@@ -193,7 +212,7 @@ body {
   }
 }
 
-/* High contrast mode support */
+/* HIGH CONTRAST MODE SUPPORT FOR ACCESSIBILITY */
 @media (prefers-contrast: high) {
   body {
     color: #2d4a3e;
@@ -213,7 +232,7 @@ body {
   }
 }
 
-/* Reduced motion support for accessibility */
+/* REDUCED MOTION SUPPORT FOR ACCESSIBILITY PREFERENCES */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -226,13 +245,4 @@ body {
   .social-media a:hover {
     transform: none;
   }
-}
-
-.copyright {
-  font-family: inherit;
-  font-size: 0.8em;
-  color: #668B7C;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  text-align: center;
 }

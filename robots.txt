@@ -1,21 +1,38 @@
-# robots.txt for maytenlane.com
-# Allow all search engines to crawl the site except for sensitive or non-existent directories
+# ROBOTS.TXT FILE FOR MAYTEN LANE WEBSITE
+# THIS FILE PROVIDES INSTRUCTIONS TO SEARCH ENGINE CRAWLERS
+# LAST UPDATED: 2025-01-27
+# OPTIMIZED FOR MAXIMUM SEARCH ENGINE VISIBILITY
 
+# ALLOW ALL SEARCH ENGINES TO CRAWL THE ENTIRE SITE
 User-agent: *
-Disallow: /private/
-Disallow: /backup/
-Disallow: /test/
-Disallow: /cgi-bin/
+Allow: /
 
-# Allow crawling of all public assets
-Allow: /assets/
-Allow: /assets/icons/
-Allow: /assets/logos/
-Allow: /assets/banners/
+# SPECIFIC INSTRUCTIONS FOR GOOGLEBOT
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
 
-# Explicitly allow main pages
-Allow: /index.html
-Allow: /404.html
+# SPECIFIC INSTRUCTIONS FOR BINGBOT
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
 
-# Sitemap reference
+# SPECIFIC INSTRUCTIONS FOR SLURP (YAHOO)
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# SPECIFIC INSTRUCTIONS FOR DUCKDUCKGO
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# LOCATION OF XML SITEMAP FOR SEARCH ENGINE DISCOVERY
 Sitemap: https://www.maytenlane.com/sitemap.xml
+
+# ADDITIONAL SITEMAP FOR IMAGES (IF NEEDED IN FUTURE)
+# Sitemap: https://www.maytenlane.com/sitemap-images.xml
+
+# CRAWL DELAY SETTINGS FOR RESPECTFUL CRAWLING
+# 1 SECOND DELAY BETWEEN REQUESTS TO PREVENT SERVER OVERLOAD
+Crawl-delay: 1

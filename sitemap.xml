@@ -1,43 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<!-- COMPREHENSIVE XML SITEMAP FOR MAYTEN LANE WEBSITE -->
+<!-- THIS SITEMAP PROVIDES SEARCH ENGINES WITH COMPLETE SITE STRUCTURE INFORMATION -->
+<!-- LAST UPDATED: 2025-01-27 -->
+<!-- GENERATED FOR OPTIMAL SEO AND SEARCH ENGINE INDEXING -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- MAIN HOMEPAGE - HIGHEST PRIORITY FOR SEARCH ENGINES -->
   <url>
     <loc>https://www.maytenlane.com/</loc>
-    <lastmod>2024-12-18</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://www.maytenlane.com/assets/banners/banner.png</image:loc>
-      <image:caption>Mayten Lane - A startup shop for growing technology companies</image:caption>
-      <image:title>Mayten Lane Banner</image:title>
-      <image:geo_location>California, United States</image:geo_location>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.maytenlane.com/assets/icons/favicon.ico</image:loc>
-      <image:caption>Mayten Lane Favicon</image:caption>
-      <image:title>Mayten Lane Favicon</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.maytenlane.com/assets/icons/logo.png</image:loc>
-      <image:caption>Mayten Lane Logo</image:caption>
-      <image:title>Mayten Lane Logo</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.maytenlane.com/assets/logos/Mayten%20Lane%20%7C%20G%20on%20Clear%20%7C%20500x500.png</image:loc>
-      <image:caption>Mayten Lane Logo - Professional branding for technology startups</image:caption>
-      <image:title>Mayten Lane Logo</image:title>
-      <image:geo_location>California, United States</image:geo_location>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.maytenlane.com/assets/logos/Mayten%20Lane%20%7C%20G%20on%20P%20%7C%20200x200.png</image:loc>
-      <image:caption>Mayten Lane Icon - Compact branding for digital platforms</image:caption>
-      <image:title>Mayten Lane Icon</image:title>
-      <image:geo_location>California, United States</image:geo_location>
-    </image:image>
   </url>
+
+  <!-- 404 ERROR PAGE - LOW PRIORITY BUT INCLUDED FOR COMPLETENESS -->
   <url>
     <loc>https://www.maytenlane.com/404.html</loc>
-    <lastmod>2024-12-18</lastmod>
-    <changefreq>yearly</changefreq>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.1</priority>
   </url>
+
+  <!-- ASSETS DIRECTORY PAGES - MEDIUM PRIORITY FOR RESOURCE DISCOVERY -->
+  <!-- THESE HELP SEARCH ENGINES UNDERSTAND THE SITE'S CONTENT STRUCTURE -->
+  <url>
+    <loc>https://www.maytenlane.com/assets/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- LOGO ASSETS SECTION - MEDIUM PRIORITY FOR BRAND VISIBILITY -->
+  <url>
+    <loc>https://www.maytenlane.com/assets/logos/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- BANNER ASSETS SECTION - MEDIUM PRIORITY FOR VISUAL CONTENT -->
+  <url>
+    <loc>https://www.maytenlane.com/assets/banners/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- ICON ASSETS SECTION - MEDIUM PRIORITY FOR UI ELEMENTS -->
+  <url>
+    <loc>https://www.maytenlane.com/assets/icons/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- EXTERNAL SOCIAL MEDIA PROFILES - LOW PRIORITY BUT IMPORTANT FOR BRAND PRESENCE -->
+  <!-- LINKEDIN COMPANY PAGE -->
+  <url>
+    <loc>https://www.linkedin.com/company/maytenlane</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- REDDIT COMMUNITY PAGE -->
+  <url>
+    <loc>https://www.reddit.com/r/MaytenLane</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- FOUNDER'S PERSONAL WEBSITE - MEDIUM PRIORITY FOR AUTHORITY BUILDING -->
+  <url>
+    <loc>https://www.alexandertibbets.com</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- YOUTUBE CHANNEL - MEDIUM PRIORITY FOR VIDEO CONTENT -->
+  <url>
+    <loc>https://www.youtube.com/@MaytenLane</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- TWITTER/X PROFILE - MEDIUM PRIORITY FOR SOCIAL PRESENCE -->
+  <url>
+    <loc>https://x.com/MaytenLane</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- INSTAGRAM PROFILE - MEDIUM PRIORITY FOR VISUAL SOCIAL PRESENCE -->
+  <url>
+    <loc>https://www.instagram.com/maytenlane</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
 </urlset>

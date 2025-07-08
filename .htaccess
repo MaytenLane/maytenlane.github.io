@@ -1,53 +1,96 @@
-# --- Mayten Lane .htaccess ---
-# Enforce HTTPS and canonical www
+# APACHE .HTACCESS FILE FOR MAYTEN LANE WEBSITE
+# THIS FILE CONFIGURES SERVER BEHAVIOR FOR OPTIMAL PERFORMANCE AND SECURITY
+# LAST UPDATED: 2025-01-27
+# OPTIMIZED FOR CLOUDFLARE AND GITHUB PAGES HOSTING
+
+# ENABLE REWRITE ENGINE FOR URL REDIRECTIONS
 RewriteEngine On
 
-# Redirect non-www to www (if not already www)
-RewriteCond %{HTTP_HOST} ^maytenlane\.com [NC]
-RewriteRule ^(.*)$ https://www.maytenlane.com/$1 [R=301,L]
-
-# Redirect HTTP to HTTPS
+# FORCE HTTPS REDIRECTION FOR ALL TRAFFIC
+# REDIRECTS HTTP TO HTTPS FOR SECURITY
 RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Set caching for static assets
-<IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/gif "access plus 1 year"
-  ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
-  ExpiresByType image/x-icon "access plus 1 year"
-  ExpiresByType text/css "access plus 1 month"
-  ExpiresByType application/javascript "access plus 1 month"
-  ExpiresByType application/x-javascript "access plus 1 month"
-  ExpiresByType text/javascript "access plus 1 month"
-  ExpiresByType text/html "access plus 1 hour"
-</IfModule>
+# FORCE WWW REDIRECTION FOR CONSISTENT BRANDING
+# REDIRECTS NON-WWW TO WWW FOR UNIFIED DOMAIN HANDLING
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Set security headers
-<IfModule mod_headers.c>
-  Header set X-Content-Type-Options "nosniff"
-  Header set X-Frame-Options "SAMEORIGIN"
-  Header set X-XSS-Protection "1; mode=block"
-  Header always set Referrer-Policy "strict-origin-when-cross-origin"
-  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
-  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-</IfModule>
+# REMOVE TRAILING SLASHES FOR CLEAN URLS
+# REDIRECTS URLS WITH TRAILING SLASHES TO CLEAN VERSIONS
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [R=301,L]
 
-# Custom error pages
+# CUSTOM 404 ERROR PAGE HANDLING
+# SERVES CUSTOM 404 PAGE FOR MISSING FILES
 ErrorDocument 404 /404.html
-ErrorDocument 403 /404.html
 
-# Prevent directory listing
-Options -Indexes
+# SECURITY HEADERS FOR ENHANCED PROTECTION
+# PREVENTS CLICKJACKING ATTACKS
+Header always append X-Frame-Options SAMEORIGIN
 
-# Allow cross-origin requests for fonts (if needed)
-<FilesMatch "\.(ttf|otf|eot|woff|woff2)$">
-  <IfModule mod_headers.c>
-    Header set Access-Control-Allow-Origin "*"
-  </IfModule>
-</FilesMatch>
+# PREVENTS MIME TYPE SNIFFING ATTACKS
+Header set X-Content-Type-Options nosniff
 
-# --- End .htaccess --- 
+# ENABLES XSS PROTECTION IN BROWSERS
+Header set X-XSS-Protection "1; mode=block"
+
+# REFERRER POLICY FOR PRIVACY PROTECTION
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+# CONTENT SECURITY POLICY FOR RESOURCE CONTROL
+# ALLOWS NECESSARY RESOURCES WHILE BLOCKING MALICIOUS CONTENT
+Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://use.fontawesome.com; style-src 'self' 'unsafe-inline' https://use.fontawesome.com; font-src 'self' https://use.fontawesome.com; img-src 'self' data: https:; connect-src 'self' https://www.googletagmanager.com;"
+
+# PERFORMANCE OPTIMIZATION HEADERS
+# ENABLES GZIP COMPRESSION FOR FASTER LOADING
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# BROWSER CACHING FOR STATIC ASSETS
+# SETS APPROPRIATE CACHE HEADERS FOR DIFFERENT FILE TYPES
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # HTML FILES - SHORT CACHE FOR FREQUENT UPDATES
+    ExpiresByType text/html "access plus 1 hour"
+    
+    # CSS AND JAVASCRIPT FILES - LONGER CACHE FOR PERFORMANCE
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    
+    # IMAGES - LONG CACHE FOR BETTER PERFORMANCE
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/ico "access plus 1 year"
+    ExpiresByType image/icon "access plus 1 year"
+    ExpiresByType text/ico "access plus 1 year"
+    ExpiresByType application/ico "access plus 1 year"
+    
+    # FONTS - LONG CACHE FOR CONSISTENT TYPOGRAPHY
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+</IfModule>
+
+# FILE TYPE HANDLING FOR PROPER MIME TYPES
+# ENSURES CORRECT CONTENT-TYPE HEADERS FOR VARIOUS FILE FORMATS
+AddType text/css .css
+AddType application/javascript .js
+AddType image/x-icon .ico
+AddType image/png .png
+AddType image/jpeg .jpg .jpeg
+AddType application/xml .xml 

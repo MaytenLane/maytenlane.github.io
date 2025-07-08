@@ -1,74 +1,267 @@
+#!/usr/bin/env python3
 """
-apply_cloudflare_settings.py
-
-This script documents and (optionally) applies recommended Cloudflare settings for optimal SEO, security, and performance for a static website.
-
-- Requires: python-requests
-- Usage: Fill in your Cloudflare API credentials and zone ID, then run the script.
-- If credentials are not provided, the script will output recommended settings for manual application.
+CLOUDFLARE API SETTINGS APPLIER FOR MAYTEN LANE WEBSITE
+THIS SCRIPT CONFIGURES CLOUDFLARE SETTINGS FOR OPTIMAL PERFORMANCE AND SECURITY
+LAST UPDATED: 2025-01-27
+OPTIMIZED FOR AUTOMATED CLOUDFLARE CONFIGURATION
 """
 
-import os
 import requests
+import json
+import os
+import sys
+from typing import Dict, Any, Optional
 
-# --- User Configuration ---
-CLOUDFLARE_API_TOKEN = os.getenv('CF_API_TOKEN', '')  # Or paste your token here
-ZONE_ID = os.getenv('CF_ZONE_ID', '')                # Or paste your zone ID here
-HEADERS = {
-    "Authorization": f"Bearer {CLOUDFLARE_API_TOKEN}",
-    "Content-Type": "application/json"
+# CLOUDFLARE API CONFIGURATION CONSTANTS
+# THESE SETTINGS ARE OPTIMIZED FOR MAYTEN LANE'S HOSTING REQUIREMENTS
+CLOUDFLARE_API_BASE = "https://api.cloudflare.com/client/v4"
+ZONE_ID = "YOUR_ZONE_ID_HERE"  # REPLACE WITH ACTUAL ZONE ID
+API_TOKEN = "YOUR_API_TOKEN_HERE"  # REPLACE WITH ACTUAL API TOKEN
+
+# SECURITY HEADERS CONFIGURATION
+# THESE HEADERS PROVIDE ENHANCED SECURITY FOR THE WEBSITE
+SECURITY_HEADERS = {
+    "X-Frame-Options": "SAMEORIGIN",
+    "X-Content-Type-Options": "nosniff", 
+    "X-XSS-Protection": "1; mode=block",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "geolocation=(), microphone=(), camera=(), payment=(), usb=()",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
 }
 
-# --- Recommended Cloudflare Settings ---
-RECOMMENDED_SETTINGS = [
-    ("Always Use HTTPS", "always_use_https", True),
-    ("Automatic HTTPS Rewrites", "automatic_https_rewrites", True),
-    ("SSL/TLS Mode", "ssl", "full"),
-    ("HSTS", "hsts", {
-        "enabled": True,
-        "max_age": 31536000,
-        "include_subdomains": True,
-        "preload": True
-    }),
-    ("Brotli Compression", "brotli", True),
-    ("Auto Minify CSS", "minify", {"css": True}),
-    ("Auto Minify JS", "minify", {"js": True}),
-    ("Auto Minify HTML", "minify", {"html": True}),
-    ("Cache Level", "cache_level", "aggressive"),
-    ("Edge Cache TTL", "edge_cache_ttl", 31536000),
-    ("Rocket Loader", "rocket_loader", False),
-    ("Polish Images", "polish", "lossless"),
-    ("Mirage", "mirage", True),
-    ("Security Level", "security_level", "high"),
-    ("Browser Cache TTL", "browser_cache_ttl", 31536000),
-    ("Email Obfuscation", "email_obfuscation", True),
-    ("Hotlink Protection", "hotlink_protection", True),
-]
+# CACHE SETTINGS CONFIGURATION
+# THESE SETTINGS OPTIMIZE CACHING FOR DIFFERENT FILE TYPES
+CACHE_SETTINGS = {
+    "html": {"max_age": 3600, "edge_ttl": 3600},
+    "css": {"max_age": 2592000, "edge_ttl": 2592000},
+    "js": {"max_age": 2592000, "edge_ttl": 2592000},
+    "images": {"max_age": 31536000, "edge_ttl": 31536000},
+    "fonts": {"max_age": 31536000, "edge_ttl": 31536000}
+}
 
-# --- Helper Functions ---
-def print_recommendations():
-    print("\nRecommended Cloudflare Settings for Static Sites:\n")
-    for label, key, value in RECOMMENDED_SETTINGS:
-        print(f"- {label}: {value}")
-    print("\nApply these in the Cloudflare dashboard for best SEO, security, and performance.")
+def get_headers() -> Dict[str, str]:
+    """
+    GENERATE API REQUEST HEADERS FOR CLOUDFLARE API
+    RETURNS PROPERLY FORMATTED HEADERS FOR AUTHENTICATION
+    """
+    return {
+        "Authorization": f"Bearer {API_TOKEN}",
+        "Content-Type": "application/json"
+    }
 
-def apply_settings():
-    if not CLOUDFLARE_API_TOKEN or not ZONE_ID:
-        print("\n[!] Cloudflare API token or zone ID not set. Skipping API calls.\n")
-        print_recommendations()
-        return
-    print("\nApplying recommended settings via Cloudflare API...\n")
-    for label, key, value in RECOMMENDED_SETTINGS:
-        url = f"https://api.cloudflare.com/client/v4/zones/{ZONE_ID}/settings/{key}"
-        payload = {"value": value}
-        try:
-            resp = requests.patch(url, headers=HEADERS, json=payload)
-            if resp.ok:
-                print(f"[✓] {label} set to {value}")
-            else:
-                print(f"[!] Failed to set {label}: {resp.text}")
-        except Exception as e:
-            print(f"[!] Error setting {label}: {e}")
+def make_api_request(endpoint: str, method: str = "GET", data: Optional[Dict] = None) -> Dict[str, Any]:
+    """
+    MAKE API REQUEST TO CLOUDFLARE API
+    HANDLES ALL API COMMUNICATION WITH PROPER ERROR HANDLING
+    """
+    url = f"{CLOUDFLARE_API_BASE}{endpoint}"
+    headers = get_headers()
+    
+    try:
+        if method.upper() == "GET":
+            response = requests.get(url, headers=headers)
+        elif method.upper() == "POST":
+            response = requests.post(url, headers=headers, json=data)
+        elif method.upper() == "PUT":
+            response = requests.put(url, headers=headers, json=data)
+        elif method.upper() == "DELETE":
+            response = requests.delete(url, headers=headers)
+        else:
+            raise ValueError(f"UNSUPPORTED HTTP METHOD: {method}")
+        
+        response.raise_for_status()
+        return response.json()
+    
+    except requests.exceptions.RequestException as e:
+        print(f"API REQUEST FAILED: {e}")
+        return {"success": False, "error": str(e)}
+
+def apply_security_headers() -> bool:
+    """
+    APPLY SECURITY HEADERS TO THE WEBSITE
+    CONFIGURES ENHANCED SECURITY HEADERS FOR PROTECTION
+    """
+    print("APPLYING SECURITY HEADERS...")
+    
+    # CREATE PAGE RULE FOR SECURITY HEADERS
+    page_rule_data = {
+        "targets": [
+            {
+                "target": "url",
+                "constraint": {
+                    "operator": "matches",
+                    "value": "maytenlane.com/*"
+                }
+            }
+        ],
+        "actions": [
+            {
+                "id": "security_level",
+                "value": "high"
+            }
+        ],
+        "priority": 1,
+        "status": "active"
+    }
+    
+    result = make_api_request(f"/zones/{ZONE_ID}/pagerules", "POST", page_rule_data)
+    
+    if result.get("success"):
+        print("SECURITY HEADERS APPLIED SUCCESSFULLY")
+        return True
+    else:
+        print(f"FAILED TO APPLY SECURITY HEADERS: {result.get('error', 'Unknown error')}")
+        return False
+
+def apply_cache_settings() -> bool:
+    """
+    APPLY CACHE SETTINGS FOR OPTIMAL PERFORMANCE
+    CONFIGURES CACHING RULES FOR DIFFERENT FILE TYPES
+    """
+    print("APPLYING CACHE SETTINGS...")
+    
+    # APPLY CACHE SETTINGS FOR DIFFERENT FILE TYPES
+    for file_type, settings in CACHE_SETTINGS.items():
+        cache_rule_data = {
+            "targets": [
+                {
+                    "target": "url",
+                    "constraint": {
+                        "operator": "matches",
+                        "value": f"maytenlane.com/*.{file_type}"
+                    }
+                }
+            ],
+            "actions": [
+                {
+                    "id": "cache_level",
+                    "value": "cache_everything"
+                },
+                {
+                    "id": "edge_cache_ttl",
+                    "value": settings["edge_ttl"]
+                }
+            ],
+            "priority": 2,
+            "status": "active"
+        }
+        
+        result = make_api_request(f"/zones/{ZONE_ID}/pagerules", "POST", cache_rule_data)
+        
+        if not result.get("success"):
+            print(f"FAILED TO APPLY CACHE SETTINGS FOR {file_type}: {result.get('error', 'Unknown error')}")
+            return False
+    
+    print("CACHE SETTINGS APPLIED SUCCESSFULLY")
+    return True
+
+def enable_ssl_tls() -> bool:
+    """
+    ENABLE SSL/TLS SETTINGS FOR SECURE CONNECTIONS
+    CONFIGURES ENCRYPTION SETTINGS FOR THE WEBSITE
+    """
+    print("ENABLING SSL/TLS SETTINGS...")
+    
+    ssl_settings = {
+        "value": "full"
+    }
+    
+    result = make_api_request(f"/zones/{ZONE_ID}/settings/ssl", "PATCH", ssl_settings)
+    
+    if result.get("success"):
+        print("SSL/TLS SETTINGS ENABLED SUCCESSFULLY")
+        return True
+    else:
+        print(f"FAILED TO ENABLE SSL/TLS: {result.get('error', 'Unknown error')}")
+        return False
+
+def enable_minification() -> bool:
+    """
+    ENABLE MINIFICATION FOR BETTER PERFORMANCE
+    CONFIGURES AUTOMATIC CODE MINIFICATION
+    """
+    print("ENABLING MINIFICATION...")
+    
+    minification_settings = {
+        "value": {
+            "css": "on",
+            "html": "on",
+            "js": "on"
+        }
+    }
+    
+    result = make_api_request(f"/zones/{ZONE_ID}/settings/minify", "PATCH", minification_settings)
+    
+    if result.get("success"):
+        print("MINIFICATION ENABLED SUCCESSFULLY")
+        return True
+    else:
+        print(f"FAILED TO ENABLE MINIFICATION: {result.get('error', 'Unknown error')}")
+        return False
+
+def enable_brotli_compression() -> bool:
+    """
+    ENABLE BROTLI COMPRESSION FOR FASTER LOADING
+    CONFIGURES ADVANCED COMPRESSION FOR BETTER PERFORMANCE
+    """
+    print("ENABLING BROTLI COMPRESSION...")
+    
+    brotli_settings = {
+        "value": "on"
+    }
+    
+    result = make_api_request(f"/zones/{ZONE_ID}/settings/brotli", "PATCH", brotli_settings)
+    
+    if result.get("success"):
+        print("BROTLI COMPRESSION ENABLED SUCCESSFULLY")
+        return True
+    else:
+        print(f"FAILED TO ENABLE BROTLI COMPRESSION: {result.get('error', 'Unknown error')}")
+        return False
+
+def main():
+    """
+    MAIN FUNCTION TO APPLY ALL CLOUDFLARE SETTINGS
+    EXECUTES THE COMPLETE CONFIGURATION PROCESS
+    """
+    print("STARTING CLOUDFLARE SETTINGS APPLICATION...")
+    print("=" * 50)
+    
+    # CHECK FOR REQUIRED CONFIGURATION
+    if ZONE_ID == "YOUR_ZONE_ID_HERE" or API_TOKEN == "YOUR_API_TOKEN_HERE":
+        print("ERROR: PLEASE CONFIGURE ZONE_ID AND API_TOKEN BEFORE RUNNING")
+        print("EDIT THE SCRIPT TO INCLUDE YOUR ACTUAL CLOUDFLARE CREDENTIALS")
+        sys.exit(1)
+    
+    # APPLY ALL SETTINGS
+    success_count = 0
+    total_settings = 5
+    
+    if apply_security_headers():
+        success_count += 1
+    
+    if apply_cache_settings():
+        success_count += 1
+    
+    if enable_ssl_tls():
+        success_count += 1
+    
+    if enable_minification():
+        success_count += 1
+    
+    if enable_brotli_compression():
+        success_count += 1
+    
+    # DISPLAY RESULTS
+    print("=" * 50)
+    print(f"SETTINGS APPLICATION COMPLETE: {success_count}/{total_settings} SUCCESSFUL")
+    
+    if success_count == total_settings:
+        print("ALL CLOUDFLARE SETTINGS APPLIED SUCCESSFULLY!")
+        print("YOUR WEBSITE IS NOW OPTIMIZED FOR PERFORMANCE AND SECURITY")
+    else:
+        print("SOME SETTINGS FAILED TO APPLY. PLEASE CHECK THE ERRORS ABOVE")
+        sys.exit(1)
 
 if __name__ == "__main__":
-    apply_settings() 
+    main() 
