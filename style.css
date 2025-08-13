@@ -40,13 +40,41 @@
   --focus-outline-offset: 2px;
 }
 
+/* Fallback values in case CSS custom properties fail to load */
+.skip-link {
+  background: #668B7C;
+  border-radius: 5px;
+  transition: top 0.3s ease;
+}
+
+#content {
+  max-width: 650px;
+  padding: 20px;
+  margin-top: 5%;
+}
+
+.social-media {
+  max-width: 650px;
+  margin: 20px auto 15%;
+  padding: 20px;
+  gap: 20px;
+}
+
+.social-media a {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: color 0.3s ease;
+}
+
 /* ==========================================================================
    ACCESSIBILITY ENHANCEMENTS
    ========================================================================== */
 .skip-link {
-  position: absolute;
-  top: -40px;
-  left: 6px;
+  position: absolute !important;
+  top: -40px !important;
+  left: 6px !important;
   z-index: 1000;
   
   /* Styling */
@@ -58,15 +86,48 @@
   
   /* Interactions */
   transition: top var(--transition-duration) ease;
+  
+  /* Ensure it's hidden by default */
+  opacity: 0;
+  pointer-events: none;
 }
 
 .skip-link:focus {
-  top: 6px;
+  top: 6px !important;
+  opacity: 1;
+  pointer-events: auto;
 }
 
-/* Ensure skip link is hidden by default */
+/* Ensure skip link is completely hidden by default */
 .skip-link:not(:focus) {
-  top: -40px;
+  top: -40px !important;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Additional rule to ensure skip link doesn't interfere with main content */
+#main-content {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Debug: Remove any potential green backgrounds */
+#main-content,
+#content,
+main {
+  background: transparent !important;
+}
+
+/* Force hide skip link by default */
+.skip-link {
+  display: none;
+}
+
+.skip-link:focus {
+  display: block;
 }
 
 /* ==========================================================================
@@ -226,6 +287,17 @@ body {
 .social-media i {
   font-size: 2rem;
   display: block;
+}
+
+/* Force clean social media hover effects */
+.social-media a:hover,
+.social-media a:focus,
+.social-media a:active {
+  border: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  background: transparent !important;
 }
 
 /* ==========================================================================
