@@ -4,6 +4,36 @@
    ========================================================================== */
 
 /* ==========================================================================
+   ACCESSIBILITY
+   Skip link for keyboard navigation
+   ========================================================================== */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  z-index: 1000;
+  
+  /* Styling */
+  background: var(--color-primary);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  
+  /* Interactions */
+  transition: top var(--transition-duration) ease;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Ensure skip link is hidden by default */
+.skip-link:not(:focus) {
+  top: -40px;
+}
+
+/* ==========================================================================
    BASE CRITICAL STYLES
    ========================================================================== */
 body {
@@ -92,10 +122,10 @@ body {
   align-items: center;
   
   /* Sizing & Spacing */
-  max-width: 650px;
-  margin: 20px auto 15%;
-  padding: 20px;
-  gap: 20px;
+  max-width: var(--max-width-content);
+  margin: var(--spacing-md) auto var(--spacing-xl);
+  padding: var(--spacing-md);
+  gap: var(--spacing-md);
 }
 
 .social-media a {
@@ -105,18 +135,33 @@ body {
   justify-content: center;
   
   /* Sizing */
-  min-width: 44px;
-  min-height: 44px;
-  padding: 10px;
+  min-width: var(--min-touch-target);
+  min-height: var(--min-touch-target);
+  padding: var(--spacing-xs);
   
   /* Styling */
-  color: #668B7C;
+  color: var(--color-primary);
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   background-color: transparent;
   
   /* Interactions */
-  transition: all 0.3s ease;
+  transition: color var(--transition-duration) ease;
+}
+
+.social-media a:hover,
+.social-media a:focus {
+  color: var(--color-secondary);
+  background-color: transparent;
+  transform: none;
+  text-decoration: none;
+  border-bottom: none;
+  outline: none;
+}
+
+.social-media a:focus-visible {
+  outline: var(--focus-outline-width) solid var(--color-secondary);
+  outline-offset: var(--focus-outline-offset);
 }
 
 .social-media i {

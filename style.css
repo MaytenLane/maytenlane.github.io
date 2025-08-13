@@ -64,6 +64,11 @@
   top: 6px;
 }
 
+/* Ensure skip link is hidden by default */
+.skip-link:not(:focus) {
+  top: -40px;
+}
+
 /* ==========================================================================
    BASE STYLES
    Foundation styles for the entire document
@@ -200,7 +205,7 @@ body {
   background-color: transparent;
   
   /* Interactions */
-  transition: all var(--transition-duration) ease;
+  transition: color var(--transition-duration) ease;
 }
 
 .social-media a:hover,
@@ -210,6 +215,7 @@ body {
   transform: none;
   text-decoration: none;
   border-bottom: none;
+  outline: none;
 }
 
 .social-media a:focus-visible {
