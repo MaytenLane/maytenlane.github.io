@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
+  <!-- ==========================================================================
+       META INFORMATION
+       ========================================================================== -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mayten Lane | A startup shop for growing technology companies</title>
   <meta name="description" content="We specialize in establishing then scaling go-to-market, community, customer lifecycle, and business operations for early stage technology companies.">
   <meta name="author" content="Alexander Tibbets">
-  <meta name="keywords" content="Mayten Lane, Alexander Tibbets, Alex Tibbets, Janicke Rich, startups, media technology, marketing, business, Berkeley, California, NYU, New York University, go-to-market, customer lifecycle, community development, business operations">
+  <meta name="keywords" content="Mayten Lane, Alexander Tibbets, Alex Tibbets, Janicke Rich, startups, media technology, marketing, business, Berkeley, California, NYU, New York University, go-to-market, customer lifecycle, community development, business operations, startup consulting, business scaling">
   <meta name="robots" content="index, follow">
   <meta name="google-site-verification" content="72XRhTqH9JCiCdFpUNZYbY5xJj_91TAWbkcC434c2kU">
+  
+  <!-- ==========================================================================
+       CANONICAL AND CONNECTIONS
+       ========================================================================== -->
   <link rel="canonical" href="https://www.maytenlane.com">
   <link rel="preconnect" href="https://www.maytenlane.com">
+  <link rel="preconnect" href="https://use.fontawesome.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
   <link rel="dns-prefetch" href="https://use.fontawesome.com">
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
-  <!-- OPEN GRAPH META TAGS FOR SOCIAL MEDIA SHARING -->
+  <!-- ==========================================================================
+       OPEN GRAPH META TAGS
+       Social media sharing optimization
+       ========================================================================== -->
   <meta property="og:title" content="Mayten Lane | A startup shop for growing technology companies">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.maytenlane.com">
@@ -23,103 +35,128 @@
   <meta property="og:image:width" content="896">
   <meta property="og:image:height" content="512">
   <meta property="og:site_name" content="Mayten Lane">
+  <meta property="og:locale" content="en_US">
 
-  <!-- TWITTER CARD META TAGS FOR TWITTER SHARING -->
+  <!-- ==========================================================================
+       TWITTER CARD META TAGS
+       Twitter sharing optimization
+       ========================================================================== -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Mayten Lane | A startup shop for growing technology companies">
   <meta name="twitter:description" content="We specialize in establishing then scaling go-to-market, community, customer lifecycle, and business operations for early stage technology companies.">
   <meta name="twitter:image" content="https://www.maytenlane.com/assets/banners/banner.png">
   <meta name="twitter:creator" content="@maytenlane">
+  <meta name="twitter:site" content="@maytenlane">
 
-  <!-- ADDITIONAL SEO AND MOBILE OPTIMIZATION META TAGS -->
+  <!-- ==========================================================================
+       ADDITIONAL SEO AND MOBILE OPTIMIZATION
+       ========================================================================== -->
   <meta name="theme-color" content="#668B7C">
   <meta name="msapplication-TileColor" content="#668B7C">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Mayten Lane">
+  <meta name="format-detection" content="telephone=no">
 
-  <!-- FAVICON AND APP ICONS -->
+  <!-- ==========================================================================
+       FAVICON AND APP ICONS
+       ========================================================================== -->
   <link rel="shortcut icon" type="image/x-icon" href="/assets/icons/favicon.ico">
   <link rel="apple-touch-icon" href="/assets/logos/Mayten%20Lane%20%7C%20G%20on%20P%20%7C%20200x200.png">
   
-  <!-- CRITICAL CSS INLINED FOR FASTER ABOVE-THE-FOLD RENDERING -->
-  <style>
-    body {
-      color: #668B7C;
-      background-color: #FFDAB9;
-      font-family: 'Georgia', Serif;
-      align-items: center;
-      text-align: center;
-      justify-content: center;
-      margin: 0;
-      padding: 0;
-    }
-    #content {
-      max-width: 650px;
-      padding: 20px;
-      margin: 0 auto;
-      margin-top: 5%;
-      align-items: center;
-      text-align: center;
-      justify-content: center;
-    }
-    .logo {
-      height: 80%;
-      width: 80%;
-      max-width: 400px;
-    }
-  </style>
+  <!-- ==========================================================================
+       RESOURCE PRELOADING
+       Critical resources for above-the-fold rendering
+       ========================================================================== -->
+  <link rel="preload" href="/critical.css" as="style">
+  <link rel="preload" href="/assets/logos/Mayten%20Lane%20%7C%20G%20on%20Clear%20%7C%20500x500.png" as="image">
   
-  <!-- NON-CRITICAL CSS LOADED ASYNCHRONOUSLY FOR BETTER PERFORMANCE -->
+  <!-- ==========================================================================
+       STYLESHEETS
+       Critical CSS first, then non-critical CSS
+       ========================================================================== -->
+  <link rel="stylesheet" href="/critical.css">
   <link rel="stylesheet" href="/style.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="/style.css"></noscript>
   
-  <!-- FONTAWESOME ICONS LOADED WITH PERFORMANCE OPTIMIZATION -->
+  <!-- ==========================================================================
+       EXTERNAL RESOURCES
+       FontAwesome icons with performance optimization
+       ========================================================================== -->
   <link href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript>
     <link href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" rel="stylesheet">
   </noscript>
 
-  <!-- HTTPS ENFORCEMENT SCRIPT FOR SECURITY -->
-  <script>
-    if (location.protocol !== 'https:' && (location.hostname === 'maytenlane.com' || location.hostname === 'www.maytenlane.com')) {
-      location.href = 'https://www.maytenlane.com' + location.pathname + location.search;
-    }
-  </script>
-
-  <!-- GOOGLE ANALYTICS TRACKING CODE -->
+  <!-- ==========================================================================
+       ANALYTICS
+       Google Analytics tracking code
+       ========================================================================== -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZDX379JWH"></script>
   <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-LZDX379JWH');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LZDX379JWH');
   </script>
 </head>
 
 <body>
-  <!-- GOOGLE TAG MANAGER NOSCRIPT FALLBACK -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-LZDX379JWH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- ==========================================================================
+       GOOGLE TAG MANAGER
+       ========================================================================== -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=G-LZDX379JWH" 
+            height="0" width="0" 
+            style="display:none;visibility:hidden">
+    </iframe>
+  </noscript>
   
+  <!-- ==========================================================================
+       ACCESSIBILITY
+       Skip link for keyboard navigation
+       ========================================================================== -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- ==========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================== -->
   <div id="content">
-    <!-- MAIN LOGO HEADER SECTION -->
-    <header>
+    <!-- ==========================================================================
+         HEADER SECTION
+         Company logo and branding
+         ========================================================================== -->
+    <header role="banner">
       <img src="assets/logos/Mayten%20Lane%20%7C%20G%20on%20Clear%20%7C%20500x500.png" 
            alt="Mayten Lane logo - A startup shop for growing technology companies" 
            title="Mayten Lane" 
            class="logo" 
            height="400" 
            width="400"
-           loading="eager">
+           loading="eager"
+           decoding="async">
     </header>
 
-    <!-- MAIN CONTENT SECTION WITH COMPANY DESCRIPTION -->
-    <main role="main">
+    <!-- ==========================================================================
+         MAIN CONTENT SECTION
+         Company description and information
+         ========================================================================== -->
+    <main id="main-content" role="main">
       <br>
       <h1>Mayten Lane</h1>
       <p>A startup shop for<br>growing technology companies.</p>
-      <p>By <a target="_blank" style="text-decoration: none" href="https://www.alexandertibbets.com" title="Alexander Tibbets - Founder of Mayten Lane" rel="noopener noreferrer">Alexander Tibbets</a>.</p>
-      <!-- SOCIAL MEDIA CONTACT LINKS -->
-      <div class="social-media">
+      <p>By <a target="_blank" 
+               style="text-decoration: none" 
+               href="https://www.alexandertibbets.com" 
+               title="Alexander Tibbets - Founder of Mayten Lane" 
+               rel="noopener noreferrer">Alexander Tibbets</a>.</p>
+      
+      <!-- ==========================================================================
+           SOCIAL MEDIA CONTACT LINKS
+           ========================================================================== -->
+      <div class="social-media" 
+           role="navigation" 
+           aria-label="Social media and contact links">
         <a href="mailto:alexander.tibbets@gmail.com?subject=Let's%20talk%20%7C%20Mayten%20Lane" 
            target="_blank" 
            title="Email Alexander Tibbets about Mayten Lane" 
@@ -145,12 +182,18 @@
     </main>
   </div>
 
-  <!-- FOOTER SECTION WITH COPYRIGHT INFORMATION -->
+  <!-- ==========================================================================
+       FOOTER SECTION
+       Copyright and legal information
+       ========================================================================== -->
   <footer role="contentinfo">
     <div class="copyright">© 2025&nbsp;&nbsp;&nbsp;Mayten Lane&nbsp;&nbsp;&nbsp;Berkeley</div>
   </footer>
 
-  <!-- STRUCTURED DATA FOR SEARCH ENGINES AND RICH SNIPPETS -->
+  <!-- ==========================================================================
+       STRUCTURED DATA
+       Search engine optimization and rich snippets
+       ========================================================================== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -171,8 +214,7 @@
       "https://www.reddit.com/r/MaytenLane",
       "https://www.youtube.com/@MaytenLane",
       "https://x.com/MaytenLane",
-      "https://www.instagram.com/maytenlane",
-      "https://www.youtube.com/@MaytenLane"
+      "https://www.instagram.com/maytenlane"
     ],
     "contactPoint": {
       "@type": "ContactPoint",

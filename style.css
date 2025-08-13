@@ -1,201 +1,292 @@
-/* OPTIMIZED CSS FOR MAYTEN LANE - ENHANCED FOR PERFORMANCE AND ACCESSIBILITY */
+/* ==========================================================================
+   MAYTEN LANE - MAIN STYLESHEET
+   Enhanced for performance, accessibility, and maintainability
+   ========================================================================== */
 
-/* REMOVED UNUSED FONT-FACE DECLARATION THAT REFERENCES NON-EXISTENT FILES */
-/* @font-face {
-  font-family: 'Georgia';
-  src: url('path/to/Georgia.woff2') format('woff2'),
-       url('path/to/Georgia.woff') format('woff');
-  font-display: swap;
-} */
+/* ==========================================================================
+   CSS CUSTOM PROPERTIES
+   Centralized theming and consistent values
+   ========================================================================== */
+:root {
+  /* Color Palette */
+  --color-primary: #668B7C;
+  --color-secondary: #B66868;
+  --color-background: #FFDAB9;
+  --color-text: #668B7C;
+  
+  /* Typography */
+  --font-family-primary: 'Georgia', 'Times New Roman', serif;
+  --font-size-base: 18px;
+  --font-size-small: 0.8em;
+  --line-height-base: 1.6;
+  --line-height-heading: 1.4;
+  --line-height-body: 1.5;
+  
+  /* Spacing Scale */
+  --spacing-xs: 10px;
+  --spacing-sm: 15px;
+  --spacing-md: 20px;
+  --spacing-lg: 5%;
+  --spacing-xl: 15%;
+  
+  /* Layout & Sizing */
+  --max-width-content: 650px;
+  --border-radius: 5px;
+  --transition-duration: 0.3s;
+  
+  /* Accessibility */
+  --min-touch-target: 44px;
+  --focus-outline-width: 2px;
+  --focus-outline-offset: 2px;
+}
 
-/* BASE STYLES WITH IMPROVED ACCESSIBILITY AND READABILITY */
+/* ==========================================================================
+   ACCESSIBILITY ENHANCEMENTS
+   ========================================================================== */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  z-index: 1000;
+  
+  /* Styling */
+  background: var(--color-primary);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  
+  /* Interactions */
+  transition: top var(--transition-duration) ease;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* ==========================================================================
+   BASE STYLES
+   Foundation styles for the entire document
+   ========================================================================== */
 body {
-  color: #668B7C;
-  background-color: #FFDAB9;
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 18px; /* IMPROVED BASE FONT SIZE FOR WCAG AA COMPLIANCE */
-  line-height: 1.6; /* BETTER LINE HEIGHT FOR IMPROVED READABILITY */
+  /* Layout & Positioning */
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  text-align: center;
   justify-content: center;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  
+  /* Typography */
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  text-align: center;
+  
+  /* Colors */
+  color: var(--color-primary);
+  background-color: var(--color-background);
+}
+
+/* ==========================================================================
+   LAYOUT COMPONENTS
+   ========================================================================== */
+#content {
+  /* Layout */
   display: flex;
   flex-direction: column;
-}
-
-/* RESPONSIVE LAYOUT ADJUSTMENTS WITH OPTIMIZED BREAKPOINTS */
-@media (max-width: 480px) {
-  body {
-    font-size: 16px;
-    margin: 0;
-  }
-  #content {
-    padding: 15px;
-    margin-top: 2%;
-  }
-  .social-media {
-    margin-bottom: 10%;
-  }
-}
-
-/* MEDIUM SCREEN RESPONSIVE DESIGN */
-@media (min-width: 481px) and (max-width: 767px) {
-  body {
-    font-size: 18px;
-  }
-  #content {
-    margin-top: 3%;
-  }
-}
-
-/* LARGE SCREEN RESPONSIVE DESIGN */
-@media (min-width: 768px) and (max-width: 991px) {
-  body {
-    font-size: 20px;
-  }
-  #content {
-    margin-top: 4%;
-  }
-}
-
-/* EXTRA LARGE SCREEN RESPONSIVE DESIGN */
-@media (min-width: 992px) {
-  body {
-    font-size: 22px;
-  }
-  #content {
-    margin-top: 5%;
-  }
-}
-
-/* MAIN CONTENT SECTION STYLING WITH ACCESSIBILITY IMPROVEMENTS */
-#content {
-  max-width: 650px;
-  padding: 20px;
-  margin: 0 auto;
-  margin-top: 5%;
   align-items: center;
-  text-align: center;
   justify-content: center;
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  
+  /* Sizing & Spacing */
+  max-width: var(--max-width-content);
+  padding: var(--spacing-md);
+  margin: 0 auto;
+  margin-top: var(--spacing-lg);
 }
 
-/* HEADING STYLES WITH OPTIMIZED TYPOGRAPHY */
+/* ==========================================================================
+   TYPOGRAPHY SYSTEM
+   ========================================================================== */
 #content h1 {
   font-size: 1.75rem;
-  line-height: 1.4;
+  line-height: var(--line-height-heading);
   font-weight: bold;
-  margin-bottom: 15px;
-  margin-top: 0;
-  color: #668B7C;
+  margin: 0 0 var(--spacing-sm) 0;
+  color: var(--color-primary);
 }
 
-/* PARAGRAPH STYLES WITH CONSISTENT SPACING */
 #content p {
   font-size: 1.75rem;
-  line-height: 1.5;
+  line-height: var(--line-height-body);
   font-weight: 400;
-  text-align: center;
-  margin: 10px 0;
-  color: #668B7C;
+  margin: var(--spacing-xs) 0;
+  color: var(--color-primary);
 }
 
-/* LINK STYLES WITH SMOOTH TRANSITIONS AND ACCESSIBILITY */
+/* ==========================================================================
+   INTERACTIVE ELEMENTS
+   ========================================================================== */
 #content a {
-  color: #668B7C;
-  transition: color 0.3s ease;
+  color: var(--color-primary);
   text-decoration: none;
   border-bottom: 1px solid transparent;
+  transition: color var(--transition-duration) ease;
 }
 
-/* LINK HOVER AND FOCUS STATES FOR BETTER UX */
 #content a:hover,
 #content a:focus {
-  color: #B66868;
-  border-bottom-color: #B66868;
+  color: var(--color-secondary);
+  border-bottom-color: var(--color-secondary);
   outline: none;
 }
 
-/* FOCUS-VISIBLE STYLES FOR KEYBOARD NAVIGATION */
 #content a:focus-visible {
-  outline: 2px solid #B66868;
-  outline-offset: 2px;
+  outline: var(--focus-outline-width) solid var(--color-secondary);
+  outline-offset: var(--focus-outline-offset);
 }
 
-/* LOGO STYLING WITH RESPONSIVE BEHAVIOR AND OPTIMIZED SIZING */
+/* ==========================================================================
+   VISUAL ELEMENTS
+   ========================================================================== */
 .logo {
+  /* Sizing */
   height: 80%;
   width: 80%;
   max-width: 400px;
   max-height: 400px;
-  object-fit: contain;
+  
+  /* Layout */
   display: block;
   margin: 0 auto;
+  
+  /* Rendering */
+  object-fit: contain;
 }
 
-/* SOCIAL MEDIA SECTION STYLING WITH ACCESSIBILITY FEATURES */
+/* ==========================================================================
+   SOCIAL MEDIA COMPONENTS
+   ========================================================================== */
 .social-media {
+  /* Layout */
   display: flex;
   justify-content: space-evenly;
-  max-width: 650px;
-  margin: 20px auto 5%;
-  padding: 20px;
-  margin-bottom: 15%;
-  gap: 20px; /* IMPROVED SPACING BETWEEN ICONS */
+  align-items: center;
+  
+  /* Sizing & Spacing */
+  max-width: var(--max-width-content);
+  margin: var(--spacing-md) auto var(--spacing-xl);
+  padding: var(--spacing-md);
+  gap: var(--spacing-md);
 }
 
-/* SOCIAL MEDIA LINK STYLES WITH TOUCH TARGET OPTIMIZATION */
 .social-media a {
-  color: #668B7C;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: transparent;
-  transition: all 0.3s ease;
+  /* Layout */
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px; /* MINIMUM TOUCH TARGET SIZE FOR ACCESSIBILITY */
-  min-height: 44px;
+  
+  /* Sizing */
+  min-width: var(--min-touch-target);
+  min-height: var(--min-touch-target);
+  padding: var(--spacing-xs);
+  
+  /* Styling */
+  color: var(--color-primary);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  background-color: transparent;
+  
+  /* Interactions */
+  transition: all var(--transition-duration) ease;
 }
 
-/* SOCIAL MEDIA HOVER AND FOCUS STATES - SIMPLIFIED FOR CLEAN UX */
 .social-media a:hover,
 .social-media a:focus {
-  color: #B66868;
+  color: var(--color-secondary);
   background-color: transparent;
   transform: none;
   text-decoration: none;
   border-bottom: none;
 }
 
-/* FOCUS-VISIBLE STYLES FOR SOCIAL MEDIA KEYBOARD NAVIGATION */
 .social-media a:focus-visible {
-  outline: 2px solid #B66868;
-  outline-offset: 2px;
+  outline: var(--focus-outline-width) solid var(--color-secondary);
+  outline-offset: var(--focus-outline-offset);
 }
 
-/* SOCIAL MEDIA ICON STYLING */
 .social-media i {
   font-size: 2rem;
   display: block;
 }
 
-/* COPYRIGHT TEXT STYLING - ALWAYS 20% SMALLER THAN BODY TEXT */
+/* ==========================================================================
+   FOOTER COMPONENTS
+   ========================================================================== */
 .copyright {
   font-family: inherit;
-  font-size: 0.8em;
-  color: #668B7C;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  font-size: var(--font-size-small);
+  color: var(--color-primary);
+  margin: var(--spacing-xs) 0;
   text-align: center;
 }
 
-/* PRINT STYLES FOR BETTER ACCESSIBILITY AND USABILITY */
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   Mobile-first approach with progressive enhancement
+   ========================================================================== */
+@media (max-width: 480px) {
+  body {
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  #content {
+    padding: var(--spacing-sm);
+    margin-top: 2%;
+  }
+  
+  .social-media {
+    margin-bottom: 10%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  body {
+    font-size: var(--font-size-base);
+  }
+  
+  #content {
+    margin-top: 3%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  body {
+    font-size: 20px;
+  }
+  
+  #content {
+    margin-top: 4%;
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    font-size: 22px;
+  }
+  
+  #content {
+    margin-top: var(--spacing-lg);
+  }
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   Optimized for print media
+   ========================================================================== */
 @media print {
   body {
     background-color: white !important;
@@ -213,27 +304,18 @@ body {
   }
 }
 
-/* HIGH CONTRAST MODE SUPPORT FOR ACCESSIBILITY */
+/* ==========================================================================
+   ACCESSIBILITY PREFERENCES
+   Respect user preferences for better experience
+   ========================================================================== */
 @media (prefers-contrast: high) {
-  body {
-    color: #2d4a3e;
-    background-color: #fff5e6;
-  }
-  
-  #content a,
-  .social-media a {
-    color: #2d4a3e;
-  }
-  
-  #content a:hover,
-  #content a:focus,
-  .social-media a:hover,
-  .social-media a:focus {
-    color: #8b2d2d;
+  :root {
+    --color-primary: #2d4a3e;
+    --color-background: #fff5e6;
+    --color-secondary: #8b2d2d;
   }
 }
 
-/* REDUCED MOTION SUPPORT FOR ACCESSIBILITY PREFERENCES */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

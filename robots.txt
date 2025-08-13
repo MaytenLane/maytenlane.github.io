@@ -1,38 +1,53 @@
-# ROBOTS.TXT FILE FOR MAYTEN LANE WEBSITE
-# THIS FILE PROVIDES INSTRUCTIONS TO SEARCH ENGINE CRAWLERS
-# LAST UPDATED: 2025-01-27
-# OPTIMIZED FOR MAXIMUM SEARCH ENGINE VISIBILITY
+# =============================================================================
+# ROBOTS.TXT CONFIGURATION FOR MAYTEN LANE WEBSITE
+# Search engine crawling directives and sitemap location
+# =============================================================================
 
-# ALLOW ALL SEARCH ENGINES TO CRAWL THE ENTIRE SITE
+# =============================================================================
+# GLOBAL CRAWLING RULES
+# =============================================================================
+# Allow all search engines to crawl the entire site
 User-agent: *
 Allow: /
 
-# SPECIFIC INSTRUCTIONS FOR GOOGLEBOT
+# =============================================================================
+# SEARCH ENGINE SPECIFIC INSTRUCTIONS
+# =============================================================================
+# Google Bot
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
 
-# SPECIFIC INSTRUCTIONS FOR BINGBOT
+# Bing Bot
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# SPECIFIC INSTRUCTIONS FOR SLURP (YAHOO)
+# Yahoo Bot
 User-agent: Slurp
 Allow: /
 Crawl-delay: 1
 
-# SPECIFIC INSTRUCTIONS FOR DUCKDUCKGO
+# DuckDuckGo Bot
 User-agent: DuckDuckBot
 Allow: /
 Crawl-delay: 1
 
-# LOCATION OF XML SITEMAP FOR SEARCH ENGINE DISCOVERY
+# =============================================================================
+# RESTRICTED ACCESS
+# =============================================================================
+# Block access to administrative and system files
+Disallow: /apply_cloudflare_settings.py
+Disallow: /llm.txt
+
+# =============================================================================
+# SITEMAP LOCATION
+# =============================================================================
+# Primary sitemap for search engine discovery
 Sitemap: https://www.maytenlane.com/sitemap.xml
 
-# ADDITIONAL SITEMAP FOR IMAGES (IF NEEDED IN FUTURE)
-# Sitemap: https://www.maytenlane.com/sitemap-images.xml
-
-# CRAWL DELAY SETTINGS FOR RESPECTFUL CRAWLING
-# 1 SECOND DELAY BETWEEN REQUESTS TO PREVENT SERVER OVERLOAD
+# =============================================================================
+# CRAWLING BEHAVIOR
+# =============================================================================
+# Respectful crawling with 1 second delay between requests
 Crawl-delay: 1

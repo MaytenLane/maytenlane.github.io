@@ -1,87 +1,109 @@
-# CLOUDFLARE _HEADERS FILE FOR MAYTEN LANE WEBSITE
-# THIS FILE SETS SECURITY AND PERFORMANCE HEADERS FOR CLOUDFLARE HOSTING
-# LAST UPDATED: 2025-01-27
-# OPTIMIZED FOR MAXIMUM SECURITY AND PERFORMANCE
+# =============================================================================
+# CLOUDFLARE HEADERS CONFIGURATION FOR MAYTEN LANE WEBSITE
+# Security, performance, and caching headers for optimal delivery
+# =============================================================================
 
-# GLOBAL HEADERS APPLIED TO ALL PAGES
+# =============================================================================
+# GLOBAL SECURITY HEADERS
+# Applied to all pages and resources
+# =============================================================================
 /*
-  # SECURITY HEADERS FOR ENHANCED PROTECTION
-  # PREVENTS CLICKJACKING ATTACKS BY RESTRICTING FRAME EMBEDDING
+  # ==========================================================================
+  # SECURITY HEADERS
+  # ==========================================================================
+  
+  # Frame embedding protection
   X-Frame-Options: SAMEORIGIN
   
-  # PREVENTS MIME TYPE SNIFFING ATTACKS
+  # MIME type sniffing protection
   X-Content-Type-Options: nosniff
   
-  # ENABLES XSS PROTECTION IN BROWSERS
+  # XSS protection
   X-XSS-Protection: 1; mode=block
   
-  # REFERRER POLICY FOR PRIVACY PROTECTION
+  # Referrer policy for privacy
   Referrer-Policy: strict-origin-when-cross-origin
   
-  # CONTENT SECURITY POLICY FOR RESOURCE CONTROL
-  # ALLOWS NECESSARY RESOURCES WHILE BLOCKING MALICIOUS CONTENT
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://use.fontawesome.com; style-src 'self' 'unsafe-inline' https://use.fontawesome.com; font-src 'self' https://use.fontawesome.com; img-src 'self' data: https:; connect-src 'self' https://www.googletagmanager.com;
+  # ==========================================================================
+  # CONTENT SECURITY POLICY
+  # ==========================================================================
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://use.fontawesome.com; style-src 'self' 'unsafe-inline' https://use.fontawesome.com; font-src 'self' https://use.fontawesome.com; img-src 'self' data: https:; connect-src 'self' https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self';
   
-  # PERMISSIONS POLICY FOR FEATURE CONTROL
-  # RESTRICTS ACCESS TO SENSITIVE BROWSER FEATURES
-  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+  # ==========================================================================
+  # PERMISSIONS POLICY
+  # ==========================================================================
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), ambient-light-sensor=(), autoplay=(), encrypted-media=(), fullscreen=(), picture-in-picture=(), speaker=(), sync-xhr=(), midi=(), clipboard-read=(), clipboard-write=()
   
-  # STRICT TRANSPORT SECURITY FOR HTTPS ENFORCEMENT
-  # FORCES HTTPS CONNECTIONS FOR ENHANCED SECURITY
+  # ==========================================================================
+  # TRANSPORT SECURITY
+  # ==========================================================================
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  
+  # ==========================================================================
+  # CROSS-ORIGIN ISOLATION
+  # ==========================================================================
+  Cross-Origin-Embedder-Policy: require-corp
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
 
-# HTML FILES - SHORT CACHE FOR FREQUENT UPDATES
+# =============================================================================
+# HTML FILES
+# Short cache duration for frequent updates
+# =============================================================================
 /*.html
-  # CACHE CONTROL FOR HTML FILES
-  # SHORT CACHE DURATION TO ENSURE FRESH CONTENT
-  Cache-Control: public, max-age=3600, s-maxage=3600
+  Cache-Control: public, max-age=1800, s-maxage=1800
 
-# CSS FILES - LONGER CACHE FOR PERFORMANCE
+# =============================================================================
+# CSS FILES
+# Long cache duration for performance
+# =============================================================================
 /*.css
-  # CACHE CONTROL FOR CSS FILES
-  # LONGER CACHE DURATION FOR BETTER PERFORMANCE
-  Cache-Control: public, max-age=2592000, s-maxage=2592000
+  Cache-Control: public, max-age=31536000, s-maxage=31536000
 
-# JAVASCRIPT FILES - LONGER CACHE FOR PERFORMANCE
+# =============================================================================
+# JAVASCRIPT FILES
+# Long cache duration for performance
+# =============================================================================
 /*.js
-  # CACHE CONTROL FOR JAVASCRIPT FILES
-  # LONGER CACHE DURATION FOR BETTER PERFORMANCE
-  Cache-Control: public, max-age=2592000, s-maxage=2592000
+  Cache-Control: public, max-age=31536000, s-maxage=31536000
 
-# IMAGE FILES - LONG CACHE FOR BETTER PERFORMANCE
+# =============================================================================
+# IMAGE FILES
+# Very long cache duration for static assets
+# =============================================================================
 /*.png
-  # CACHE CONTROL FOR PNG IMAGES
-  # LONG CACHE DURATION FOR STATIC IMAGES
   Cache-Control: public, max-age=31536000, s-maxage=31536000
 
 /*.jpg
-  # CACHE CONTROL FOR JPG IMAGES
-  # LONG CACHE DURATION FOR STATIC IMAGES
   Cache-Control: public, max-age=31536000, s-maxage=31536000
 
 /*.jpeg
-  # CACHE CONTROL FOR JPEG IMAGES
-  # LONG CACHE DURATION FOR STATIC IMAGES
   Cache-Control: public, max-age=31536000, s-maxage=31536000
 
 /*.ico
-  # CACHE CONTROL FOR ICO FILES
-  # LONG CACHE DURATION FOR FAVICONS
   Cache-Control: public, max-age=31536000, s-maxage=31536000
 
-# FONT FILES - LONG CACHE FOR CONSISTENT TYPOGRAPHY
+# =============================================================================
+# FONT FILES
+# Very long cache duration for typography
+# =============================================================================
 /*.woff
-  # CACHE CONTROL FOR WOFF FONTS
-  # LONG CACHE DURATION FOR FONT FILES
   Cache-Control: public, max-age=31536000, s-maxage=31536000
 
 /*.woff2
-  # CACHE CONTROL FOR WOFF2 FONTS
-  # LONG CACHE DURATION FOR FONT FILES
   Cache-Control: public, max-age=31536000, s-maxage=31536000
 
-# XML FILES - MEDIUM CACHE FOR SITEMAPS
+# =============================================================================
+# XML FILES
+# Medium cache duration for sitemaps
+# =============================================================================
 /*.xml
-  # CACHE CONTROL FOR XML FILES
-  # MEDIUM CACHE DURATION FOR SITEMAPS
-  Cache-Control: public, max-age=86400, s-maxage=86400 
+  Cache-Control: public, max-age=86400, s-maxage=86400
+
+# =============================================================================
+# CRITICAL CSS
+# Highest priority caching for performance
+# =============================================================================
+/critical.css
+  Cache-Control: public, max-age=31536000, s-maxage=31536000
+  X-Content-Type-Options: nosniff 
