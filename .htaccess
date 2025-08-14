@@ -1,50 +1,35 @@
 # APACHE .HTACCESS FILE FOR MAYTEN LANE WEBSITE
-# THIS FILE CONFIGURES SERVER BEHAVIOR FOR OPTIMAL PERFORMANCE AND SECURITY
-# LAST UPDATED: 2025-01-27
-# OPTIMIZED FOR CLOUDFLARE AND GITHUB PAGES HOSTING
+# Server behavior configuration for optimal performance and security
 
-# ENABLE REWRITE ENGINE FOR URL REDIRECTIONS
+# Enable rewrite engine for URL redirections
 RewriteEngine On
 
-# FORCE HTTPS REDIRECTION FOR ALL TRAFFIC
-# REDIRECTS HTTP TO HTTPS FOR SECURITY
+# Force HTTPS redirection for all traffic
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# FORCE WWW REDIRECTION FOR CONSISTENT BRANDING
-# REDIRECTS NON-WWW TO WWW FOR UNIFIED DOMAIN HANDLING
+# Force www redirection for consistent branding
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# REMOVE TRAILING SLASHES FOR CLEAN URLS
-# REDIRECTS URLS WITH TRAILING SLASHES TO CLEAN VERSIONS
+# Remove trailing slashes for clean URLs
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} (.+)/$
 RewriteRule ^ %1 [R=301,L]
 
-# CUSTOM 404 ERROR PAGE HANDLING
-# SERVES CUSTOM 404 PAGE FOR MISSING FILES
+# Custom 404 error page handling
 ErrorDocument 404 /404.html
 
-# SECURITY HEADERS FOR ENHANCED PROTECTION
-# PREVENTS CLICKJACKING ATTACKS
+# Security headers for enhanced protection
 Header always append X-Frame-Options SAMEORIGIN
-
-# PREVENTS MIME TYPE SNIFFING ATTACKS
 Header set X-Content-Type-Options nosniff
-
-# ENABLES XSS PROTECTION IN BROWSERS
 Header set X-XSS-Protection "1; mode=block"
-
-# REFERRER POLICY FOR PRIVACY PROTECTION
 Header set Referrer-Policy "strict-origin-when-cross-origin"
 
-# CONTENT SECURITY POLICY FOR RESOURCE CONTROL
-# ALLOWS NECESSARY RESOURCES WHILE BLOCKING MALICIOUS CONTENT
+# Content security policy for resource control
 Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://use.fontawesome.com; style-src 'self' 'unsafe-inline' https://use.fontawesome.com; font-src 'self' https://use.fontawesome.com; img-src 'self' data: https:; connect-src 'self' https://www.googletagmanager.com;"
 
-# PERFORMANCE OPTIMIZATION HEADERS
-# ENABLES GZIP COMPRESSION FOR FASTER LOADING
+# Performance optimization headers
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/plain
     AddOutputFilterByType DEFLATE text/html
@@ -57,19 +42,18 @@ Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsaf
     AddOutputFilterByType DEFLATE application/x-javascript
 </IfModule>
 
-# BROWSER CACHING FOR STATIC ASSETS
-# SETS APPROPRIATE CACHE HEADERS FOR DIFFERENT FILE TYPES
+# Browser caching for static assets
 <IfModule mod_expires.c>
     ExpiresActive On
     
-    # HTML FILES - SHORT CACHE FOR FREQUENT UPDATES
+    # HTML files - short cache for frequent updates
     ExpiresByType text/html "access plus 1 hour"
     
-    # CSS AND JAVASCRIPT FILES - LONGER CACHE FOR PERFORMANCE
+    # CSS and JavaScript files - longer cache for performance
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 month"
     
-    # IMAGES - LONG CACHE FOR BETTER PERFORMANCE
+    # Images - long cache for better performance
     ExpiresByType image/png "access plus 1 year"
     ExpiresByType image/jpg "access plus 1 year"
     ExpiresByType image/jpeg "access plus 1 year"
@@ -79,15 +63,14 @@ Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsaf
     ExpiresByType text/ico "access plus 1 year"
     ExpiresByType application/ico "access plus 1 year"
     
-    # FONTS - LONG CACHE FOR CONSISTENT TYPOGRAPHY
+    # Fonts - long cache for consistent typography
     ExpiresByType font/woff "access plus 1 year"
     ExpiresByType font/woff2 "access plus 1 year"
     ExpiresByType application/font-woff "access plus 1 year"
     ExpiresByType application/font-woff2 "access plus 1 year"
 </IfModule>
 
-# FILE TYPE HANDLING FOR PROPER MIME TYPES
-# ENSURES CORRECT CONTENT-TYPE HEADERS FOR VARIOUS FILE FORMATS
+# File type handling for proper MIME types
 AddType text/css .css
 AddType application/javascript .js
 AddType image/x-icon .ico

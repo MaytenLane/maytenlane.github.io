@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- =============================================================================
-     XML SITEMAP FOR MAYTEN LANE WEBSITE
-     Search engine optimization and site structure information
-     ============================================================================= -->
+<!-- XML SITEMAP FOR MAYTEN LANE WEBSITE -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- ==========================================================================
-       MAIN WEBSITE PAGES
-       ========================================================================== -->
+  <!-- MAIN WEBSITE PAGES -->
   
   <!-- Homepage - Highest priority for search engines -->
   <url>
@@ -28,9 +23,7 @@
     <priority>0.1</priority>
   </url>
 
-  <!-- ==========================================================================
-       EXTERNAL SOCIAL MEDIA PROFILES
-       ========================================================================== -->
+  <!-- EXTERNAL SOCIAL MEDIA PROFILES -->
   
   <!-- LinkedIn Company Page -->
   <url>
@@ -48,9 +41,7 @@
     <priority>0.5</priority>
   </url>
 
-  <!-- ==========================================================================
-       FOUNDER AND AUTHORITY PAGES
-       ========================================================================== -->
+  <!-- FOUNDER AND AUTHORITY PAGES -->
   
   <!-- Founder's Personal Website -->
   <url>
@@ -60,9 +51,7 @@
     <priority>0.4</priority>
   </url>
 
-  <!-- ==========================================================================
-       SOCIAL MEDIA PRESENCE
-       ========================================================================== -->
+  <!-- SOCIAL MEDIA PRESENCE -->
   
   <!-- YouTube Channel -->
   <url>

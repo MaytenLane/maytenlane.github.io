@@ -1,76 +1,41 @@
-# =============================================================================
 # CLOUDFLARE HEADERS CONFIGURATION FOR MAYTEN LANE WEBSITE
 # Security, performance, and caching headers for optimal delivery
-# =============================================================================
 
-# =============================================================================
-# GLOBAL SECURITY HEADERS
-# Applied to all pages and resources
-# =============================================================================
+# GLOBAL SECURITY HEADERS - Applied to all pages and resources
 /*
-  # ==========================================================================
   # SECURITY HEADERS
-  # ==========================================================================
-  
-  # Frame embedding protection
   X-Frame-Options: SAMEORIGIN
-  
-  # MIME type sniffing protection
   X-Content-Type-Options: nosniff
-  
-  # XSS protection
   X-XSS-Protection: 1; mode=block
-  
-  # Referrer policy for privacy
   Referrer-Policy: strict-origin-when-cross-origin
   
-  # ==========================================================================
   # CONTENT SECURITY POLICY
-  # ==========================================================================
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://use.fontawesome.com; style-src 'self' 'unsafe-inline' https://use.fontawesome.com; font-src 'self' https://use.fontawesome.com; img-src 'self' data: https:; connect-src 'self' https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self';
   
-  # ==========================================================================
   # PERMISSIONS POLICY
-  # ==========================================================================
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), ambient-light-sensor=(), autoplay=(), encrypted-media=(), fullscreen=(), picture-in-picture=(), speaker=(), sync-xhr=(), midi=(), clipboard-read=(), clipboard-write=()
   
-  # ==========================================================================
   # TRANSPORT SECURITY
-  # ==========================================================================
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   
-  # ==========================================================================
   # CROSS-ORIGIN ISOLATION
-  # ==========================================================================
   Cross-Origin-Embedder-Policy: require-corp
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
 
-# =============================================================================
-# HTML FILES
-# Short cache duration for frequent updates
-# =============================================================================
+# HTML FILES - Short cache duration for frequent updates
 /*.html
   Cache-Control: public, max-age=1800, s-maxage=1800
 
-# =============================================================================
-# CSS FILES
-# Long cache duration for performance
-# =============================================================================
+# CSS FILES - Long cache duration for performance
 /*.css
   Cache-Control: public, max-age=31536000, s-maxage=31536000
 
-# =============================================================================
-# JAVASCRIPT FILES
-# Long cache duration for performance
-# =============================================================================
+# JAVASCRIPT FILES - Long cache duration for performance
 /*.js
   Cache-Control: public, max-age=31536000, s-maxage=31536000
 
-# =============================================================================
-# IMAGE FILES
-# Very long cache duration for static assets
-# =============================================================================
+# IMAGE FILES - Very long cache duration for static assets
 /*.png
   Cache-Control: public, max-age=31536000, s-maxage=31536000
 
@@ -83,27 +48,13 @@
 /*.ico
   Cache-Control: public, max-age=31536000, s-maxage=31536000
 
-# =============================================================================
-# FONT FILES
-# Very long cache duration for typography
-# =============================================================================
+# FONT FILES - Very long cache duration for typography
 /*.woff
   Cache-Control: public, max-age=31536000, s-maxage=31536000
 
 /*.woff2
   Cache-Control: public, max-age=31536000, s-maxage=31536000
 
-# =============================================================================
-# XML FILES
-# Medium cache duration for sitemaps
-# =============================================================================
+# XML FILES - Medium cache duration for sitemaps
 /*.xml
-  Cache-Control: public, max-age=86400, s-maxage=86400
-
-# =============================================================================
-# CRITICAL CSS
-# Highest priority caching for performance
-# =============================================================================
-/critical.css
-  Cache-Control: public, max-age=31536000, s-maxage=31536000
-  X-Content-Type-Options: nosniff 
+  Cache-Control: public, max-age=86400, s-maxage=86400 

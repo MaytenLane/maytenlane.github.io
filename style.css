@@ -1,6 +1,6 @@
 /* ==========================================================================
-   MAYTEN LANE - MAIN STYLESHEET
-   Enhanced for performance, accessibility, and maintainability
+   MAYTEN LANE - STYLESHEET
+   Combined critical and non-critical styles for optimal performance
    ========================================================================== */
 
 /* ==========================================================================
@@ -19,8 +19,6 @@
   --font-size-base: 18px;
   --font-size-small: 0.8em;
   --line-height-base: 1.6;
-  --line-height-heading: 1.4;
-  --line-height-body: 1.5;
   
   /* Spacing Scale */
   --spacing-xs: 10px;
@@ -40,54 +38,21 @@
   --focus-outline-offset: 2px;
 }
 
-/* Fallback values in case CSS custom properties fail to load */
-.skip-link {
-  background: #668B7C;
-  border-radius: 5px;
-  transition: top 0.3s ease;
-}
-
-#content {
-  max-width: 650px;
-  padding: 20px;
-  margin-top: 5%;
-}
-
-.social-media {
-  max-width: 650px;
-  margin: 20px auto 15%;
-  padding: 20px;
-  gap: 20px;
-}
-
-.social-media a {
-  min-width: 44px;
-  min-height: 44px;
-  padding: 10px;
-  border-radius: 5px;
-  transition: color 0.3s ease;
-}
-
 /* ==========================================================================
-   ACCESSIBILITY ENHANCEMENTS
+   ACCESSIBILITY
+   Skip link for keyboard navigation
    ========================================================================== */
 .skip-link {
   position: absolute !important;
   top: -40px !important;
   left: 6px !important;
   z-index: 1000;
-  
-  /* Styling */
   background: var(--color-primary);
   color: white;
   padding: 8px;
   text-decoration: none;
   border-radius: var(--border-radius);
-  
-  /* Interactions */
   transition: top var(--transition-duration) ease;
-  
-  /* Ensure it's hidden by default */
   opacity: 0;
   pointer-events: none;
 }
@@ -98,44 +63,11 @@
   pointer-events: auto;
 }
 
-/* Ensure skip link is completely hidden by default */
-.skip-link:not(:focus) {
-  top: -40px !important;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Additional rule to ensure skip link doesn't interfere with main content */
-#main-content {
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-}
-
-/* Debug: Remove any potential green backgrounds */
-#main-content,
-#content,
-main {
-  background: transparent !important;
-}
-
-/* Force hide skip link by default */
-.skip-link {
-  display: none;
-}
-
-.skip-link:focus {
-  display: block;
-}
-
 /* ==========================================================================
    BASE STYLES
    Foundation styles for the entire document
    ========================================================================== */
 body {
-  /* Layout & Positioning */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -143,14 +75,10 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  
-  /* Typography */
   font-family: var(--font-family-primary);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   text-align: center;
-  
-  /* Colors */
   color: var(--color-primary);
   background-color: var(--color-background);
 }
@@ -159,14 +87,11 @@ body {
    LAYOUT COMPONENTS
    ========================================================================== */
 #content {
-  /* Layout */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex: 1;
-  
-  /* Sizing & Spacing */
   max-width: var(--max-width-content);
   padding: var(--spacing-md);
   margin: 0 auto;
@@ -178,7 +103,7 @@ body {
    ========================================================================== */
 #content h1 {
   font-size: 1.75rem;
-  line-height: var(--line-height-heading);
+  line-height: 1.4;
   font-weight: bold;
   margin: 0 0 var(--spacing-sm) 0;
   color: var(--color-primary);
@@ -186,7 +111,7 @@ body {
 
 #content p {
   font-size: 1.75rem;
-  line-height: var(--line-height-body);
+  line-height: 1.5;
   font-weight: 400;
   margin: var(--spacing-xs) 0;
   color: var(--color-primary);
@@ -218,17 +143,12 @@ body {
    VISUAL ELEMENTS
    ========================================================================== */
 .logo {
-  /* Sizing */
   height: 80%;
   width: 80%;
   max-width: 400px;
   max-height: 400px;
-  
-  /* Layout */
   display: block;
   margin: 0 auto;
-  
-  /* Rendering */
   object-fit: contain;
 }
 
@@ -236,12 +156,9 @@ body {
    SOCIAL MEDIA COMPONENTS
    ========================================================================== */
 .social-media {
-  /* Layout */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  
-  /* Sizing & Spacing */
   max-width: var(--max-width-content);
   margin: var(--spacing-md) auto var(--spacing-xl);
   padding: var(--spacing-md);
@@ -249,23 +166,16 @@ body {
 }
 
 .social-media a {
-  /* Layout */
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  /* Sizing */
   min-width: var(--min-touch-target);
   min-height: var(--min-touch-target);
   padding: var(--spacing-xs);
-  
-  /* Styling */
   color: var(--color-primary);
   text-decoration: none;
   border-radius: var(--border-radius);
   background-color: transparent;
-  
-  /* Interactions */
   transition: color var(--transition-duration) ease;
 }
 
@@ -287,17 +197,6 @@ body {
 .social-media i {
   font-size: 2rem;
   display: block;
-}
-
-/* Force clean social media hover effects */
-.social-media a:hover,
-.social-media a:focus,
-.social-media a:active {
-  border: none !important;
-  border-bottom: none !important;
-  box-shadow: none !important;
-  text-decoration: none !important;
-  background: transparent !important;
 }
 
 /* ==========================================================================

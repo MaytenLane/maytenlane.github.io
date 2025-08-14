@@ -1,53 +1,37 @@
-# =============================================================================
 # ROBOTS.TXT CONFIGURATION FOR MAYTEN LANE WEBSITE
 # Search engine crawling directives and sitemap location
-# =============================================================================
 
-# =============================================================================
 # GLOBAL CRAWLING RULES
-# =============================================================================
 # Allow all search engines to crawl the entire site
 User-agent: *
 Allow: /
 
-# =============================================================================
 # SEARCH ENGINE SPECIFIC INSTRUCTIONS
-# =============================================================================
-# Google Bot
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
 
-# Bing Bot
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# Yahoo Bot
 User-agent: Slurp
 Allow: /
 Crawl-delay: 1
 
-# DuckDuckGo Bot
 User-agent: DuckDuckBot
 Allow: /
 Crawl-delay: 1
 
-# =============================================================================
 # RESTRICTED ACCESS
-# =============================================================================
 # Block access to administrative and system files
 Disallow: /apply_cloudflare_settings.py
 Disallow: /llm.txt
 
-# =============================================================================
 # SITEMAP LOCATION
-# =============================================================================
 # Primary sitemap for search engine discovery
 Sitemap: https://www.maytenlane.com/sitemap.xml
 
-# =============================================================================
 # CRAWLING BEHAVIOR
-# =============================================================================
 # Respectful crawling with 1 second delay between requests
 Crawl-delay: 1
