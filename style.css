@@ -179,8 +179,8 @@ body {
   transition: color var(--transition-duration) ease;
 }
 
-.social-media a:hover,
-.social-media a:focus {
+#content .social-media a:hover,
+#content .social-media a:focus {
   color: var(--color-secondary);
   background-color: transparent;
   transform: none;
