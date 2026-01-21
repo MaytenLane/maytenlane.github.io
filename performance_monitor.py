@@ -13,7 +13,6 @@ import requests
 import aiohttp
 import asyncio
 import json
-import time
 import csv
 from datetime import datetime
 from typing import Dict, Any, List

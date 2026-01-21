@@ -96,6 +96,10 @@ out/
 # *.test.js
 # *.spec.js
 
+# PYTHON
+__pycache__/
+*.pyc
+
 # PERFORMANCE AND ANALYSIS FILES
 # LIGHTHOUSE REPORTS
 lighthouse-report.html
