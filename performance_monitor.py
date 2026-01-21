@@ -249,26 +249,27 @@ def generate_performance_report(analysis: Dict[str, Any]) -> str:
     if "error" in analysis:
         return f"Error: {analysis['error']}"
     
-    report = f"""
+    report_parts = []
+    report_parts.append(f"""
 PERFORMANCE REPORT FOR {analysis['url']}
 Generated: {analysis['timestamp']}
 Overall Score: {analysis['overall_score']}
 
-"""
+""")
     
     if analysis["issues"]:
-        report += "ISSUES FOUND:\n"
+        report_parts.append("ISSUES FOUND:\n")
         for issue in analysis["issues"]:
-            report += f"  • {issue}\n"
-        report += "\n"
+            report_parts.append(f"  • {issue}\n")
+        report_parts.append("\n")
     
     if analysis["recommendations"]:
-        report += "RECOMMENDATIONS:\n"
+        report_parts.append("RECOMMENDATIONS:\n")
         for rec in analysis["recommendations"]:
-            report += f"  • {rec}\n"
-        report += "\n"
+            report_parts.append(f"  • {rec}\n")
+        report_parts.append("\n")
     
-    return report
+    return "".join(report_parts)
 
 # =============================================================================
 # MAIN EXECUTION
