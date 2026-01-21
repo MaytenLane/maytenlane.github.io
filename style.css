@@ -194,9 +194,11 @@ body {
   outline-offset: var(--focus-outline-offset);
 }
 
-.social-media i {
-  font-size: 2rem;
+.social-media svg {
+  height: 2rem;
+  width: auto;
   display: block;
+  fill: currentColor;
 }
 
 /* ==========================================================================
