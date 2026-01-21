@@ -10,8 +10,9 @@ and provides actionable insights for optimization.
 """
 
 import requests
+import aiohttp
+import asyncio
 import json
-import time
 import csv
 from datetime import datetime
 from typing import Dict, Any, List
@@ -93,6 +94,42 @@ def test_page_speed(url: str, api_key: str, strategy: str = "mobile") -> Dict[st
         return response.json()
     except requests.exceptions.RequestException as e:
         return {"error": f"API request failed: {e}"}
+
+
+async def test_page_speed_async(session: aiohttp.ClientSession, url: str, api_key: str, strategy: str = "mobile") -> Dict[str, Any]:
+    """
+    Test page speed using Google PageSpeed Insights API asynchronously.
+
+    Args:
+        session: aiohttp ClientSession
+        url: Website URL to test
+        api_key: Google PageSpeed API key
+        strategy: Testing strategy ('mobile' or 'desktop')
+
+    Returns:
+        Dict containing API response or error information
+    """
+    if not api_key:
+        return {"error": "No API key provided"}
+
+    api_url = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed"
+    params = {
+        "url": url,
+        "key": api_key,
+        "strategy": strategy,
+        "category": "performance",
+        "utm_source": "maytenlane-performance-monitor"
+    }
+
+    try:
+        timeout_settings = aiohttp.ClientTimeout(total=30)
+        async with session.get(api_url, params=params, timeout=timeout_settings) as response:
+            response.raise_for_status()
+            return await response.json()
+    except aiohttp.ClientError as e:
+        return {"error": f"API request failed: {e}"}
+    except asyncio.TimeoutError:
+        return {"error": "API request timed out"}
 
 # =============================================================================
 # DATA EXTRACTION AND PROCESSING
@@ -212,36 +249,68 @@ def generate_performance_report(analysis: Dict[str, Any]) -> str:
     if "error" in analysis:
         return f"Error: {analysis['error']}"
     
-    report = f"""
+    report_parts = []
+    report_parts.append(f"""
 PERFORMANCE REPORT FOR {analysis['url']}
 Generated: {analysis['timestamp']}
 Overall Score: {analysis['overall_score']}
 
-"""
+""")
     
     if analysis["issues"]:
-        report += "ISSUES FOUND:\n"
+        report_parts.append("ISSUES FOUND:\n")
         for issue in analysis["issues"]:
-            report += f"  • {issue}\n"
-        report += "\n"
+            report_parts.append(f"  • {issue}\n")
+        report_parts.append("\n")
     
     if analysis["recommendations"]:
-        report += "RECOMMENDATIONS:\n"
+        report_parts.append("RECOMMENDATIONS:\n")
         for rec in analysis["recommendations"]:
-            report += f"  • {rec}\n"
-        report += "\n"
+            report_parts.append(f"  • {rec}\n")
+        report_parts.append("\n")
     
-    return report
+    return "".join(report_parts)
 
 # =============================================================================
 # MAIN EXECUTION
 # =============================================================================
-def main():
+async def run_strategy_test(session: aiohttp.ClientSession, url: str, api_key: str, strategy: str) -> Dict[str, Any]:
     """
-    Main function to run performance monitoring.
+    Run a single strategy test asynchronously and process results.
+    """
+    print(f"\n📱 Starting {strategy} performance test...")
+
+    # Test page speed
+    result = await test_page_speed_async(session, url, api_key, strategy)
+    if "error" in result:
+        print(f"✗ Error testing {strategy}: {result['error']}")
+        return None
     
-    Executes comprehensive performance testing for both mobile and desktop
-    strategies and generates detailed reports.
+    # Extract metrics
+    metrics = extract_core_web_vitals(result)
+    if "error" in metrics:
+        print(f"✗ Error extracting metrics for {strategy}: {metrics['error']}")
+        return None
+
+    # Analyze performance
+    analysis = analyze_performance(metrics)
+
+    # Display results
+    score = analysis.get('overall_score', 'N/A')
+    issues_count = len(analysis.get('issues', []))
+
+    print(f"📱 {strategy.capitalize()} Results:")
+    print(f"  Performance Score: {score}")
+    if issues_count > 0:
+        print(f"  Issues Found: {issues_count}")
+    else:
+        print("  ✓ All metrics within thresholds")
+
+    return metrics
+
+async def async_main():
+    """
+    Async main function to run performance monitoring.
     """
     print("=" * 70)
     print("PERFORMANCE MONITORING FOR MAYTEN LANE WEBSITE")
@@ -258,43 +327,16 @@ def main():
     
     # Test both mobile and desktop strategies
     strategies = ["mobile", "desktop"]
-    all_metrics = []
     
     print(f"\nTesting website: {WEBSITE_URL}")
     print("-" * 50)
     
-    for strategy in strategies:
-        print(f"\n📱 Testing {strategy} performance...")
-        
-        # Test page speed
-        result = test_page_speed(WEBSITE_URL, api_key, strategy)
-        if "error" in result:
-            print(f"✗ Error testing {strategy}: {result['error']}")
-            continue
-        
-        # Extract metrics
-        metrics = extract_core_web_vitals(result)
-        if "error" in metrics:
-            print(f"✗ Error extracting metrics for {strategy}: {metrics['error']}")
-            continue
-        
-        # Analyze performance
-        analysis = analyze_performance(metrics, PERFORMANCE_THRESHOLDS)
-        
-        # Display results
-        score = analysis.get('overall_score', 'N/A')
-        issues_count = len(analysis.get('issues', []))
-        
-        print(f"  Performance Score: {score}")
-        if issues_count > 0:
-            print(f"  Issues Found: {issues_count}")
-        else:
-            print("  ✓ All metrics within thresholds")
-        
-        all_metrics.append(metrics)
-        
-        # Respectful API usage
-        time.sleep(1)
+    async with aiohttp.ClientSession() as session:
+        tasks = [run_strategy_test(session, WEBSITE_URL, api_key, strategy) for strategy in strategies]
+        results = await asyncio.gather(*tasks)
+
+    # Filter out None results
+    all_metrics = [r for r in results if r is not None]
     
     # Save metrics to CSV
     if all_metrics:
@@ -308,13 +350,17 @@ def main():
         print("=" * 70)
         
         for i, metrics in enumerate(all_metrics):
-            analysis = analyze_performance(metrics, PERFORMANCE_THRESHOLDS)
-            strategy = strategies[i] if i < len(strategies) else "unknown"
+            analysis = analyze_performance(metrics)
+            strategy = metrics.get('strategy', 'unknown')
+
             print(f"\n{strategy.upper()} ANALYSIS:")
             print(generate_performance_report(analysis))
     
     print("\n" + "=" * 70)
     print("Performance monitoring complete!")
+
+def main():
+    asyncio.run(async_main())
 
 if __name__ == "__main__":
     main()

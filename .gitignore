@@ -96,6 +96,10 @@ out/
 # *.test.js
 # *.spec.js
 
+# PYTHON
+__pycache__/
+*.pyc
+
 # PERFORMANCE AND ANALYSIS FILES
 # LIGHTHOUSE REPORTS
 lighthouse-report.html
@@ -146,4 +150,7 @@ documentation/drafts/
 # OLD VERSIONS AND ARCHIVES
 old/
 archive/
-archives/ 
+archives/
+# PYTHON
+__pycache__/
+*.pyc
