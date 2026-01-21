@@ -11,7 +11,6 @@ and provides actionable insights for optimization.
 
 import requests
 import json
-import time
 import csv
 from datetime import datetime
 from typing import Dict, Any, List
@@ -291,9 +290,6 @@ def main():
             print("  ✓ All metrics within thresholds")
         
         all_metrics.append(metrics)
-        
-        # Respectful API usage
-        time.sleep(1)
     
     # Save metrics to CSV
     if all_metrics:
