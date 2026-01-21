@@ -133,12 +133,13 @@ def extract_core_web_vitals(data: Dict[str, Any]) -> Dict[str, Any]:
     except Exception as e:
         return {"error": f"Failed to extract metrics: {e}"}
 
-def analyze_performance(metrics: Dict[str, Any]) -> Dict[str, Any]:
+def analyze_performance(metrics: Dict[str, Any], thresholds: Dict[str, float]) -> Dict[str, Any]:
     """
     Analyze performance metrics against defined thresholds.
     
     Args:
         metrics: Performance metrics dictionary
+        thresholds: Dictionary of performance thresholds
         
     Returns:
         Dict containing analysis results and recommendations
@@ -155,7 +156,7 @@ def analyze_performance(metrics: Dict[str, Any]) -> Dict[str, Any]:
     }
     
     # Check each metric against thresholds
-    for metric, threshold in PERFORMANCE_THRESHOLDS.items():
+    for metric, threshold in thresholds.items():
         if metric in metrics:
             value = metrics[metric]
             if value > threshold:
@@ -278,7 +279,7 @@ def main():
             continue
         
         # Analyze performance
-        analysis = analyze_performance(metrics)
+        analysis = analyze_performance(metrics, PERFORMANCE_THRESHOLDS)
         
         # Display results
         score = analysis.get('overall_score', 'N/A')
@@ -307,7 +308,7 @@ def main():
         print("=" * 70)
         
         for i, metrics in enumerate(all_metrics):
-            analysis = analyze_performance(metrics)
+            analysis = analyze_performance(metrics, PERFORMANCE_THRESHOLDS)
             strategy = strategies[i] if i < len(strategies) else "unknown"
             print(f"\n{strategy.upper()} ANALYSIS:")
             print(generate_performance_report(analysis))
