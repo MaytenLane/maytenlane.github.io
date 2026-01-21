@@ -151,3 +151,6 @@ documentation/drafts/
 old/
 archive/
 archives/
+# PYTHON
+__pycache__/
+*.pyc
