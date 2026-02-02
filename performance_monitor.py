@@ -15,7 +15,7 @@ import asyncio
 import json
 import csv
 from datetime import datetime
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Tuple, Optional
 from pathlib import Path
 import os
 
@@ -37,6 +37,17 @@ PERFORMANCE_THRESHOLDS = {
     "speed_index": 3.4,                 # seconds
     "total_blocking_time": 300          # milliseconds
 }
+
+# Recommendations for performance issues
+RECOMMENDATION_MAP = {
+    "first_contentful_paint": "Optimize critical rendering path",
+    "largest_contentful_paint": "Optimize image loading and rendering",
+    "cumulative_layout_shift": "Fix layout shifts and use proper image dimensions",
+    "time_to_interactive": "Reduce JavaScript execution time"
+}
+
+# Shared empty dictionary to avoid repeated allocations
+EMPTY_DICT = {}
 
 # =============================================================================
 # CONFIGURATION MANAGEMENT
@@ -148,22 +159,22 @@ def extract_core_web_vitals(data: Dict[str, Any]) -> Dict[str, Any]:
         return data
     
     try:
-        lighthouse_result = data.get("lighthouseResult", {})
-        audits = lighthouse_result.get("audits", {})
+        lighthouse_result = data.get("lighthouseResult", EMPTY_DICT)
+        audits = lighthouse_result.get("audits", EMPTY_DICT)
         
         metrics = {
             "timestamp": datetime.now().isoformat(),
             "url": data.get("id", ""),
-            "strategy": lighthouse_result.get("configSettings", {}).get("formFactor", ""),
-            "performance_score": lighthouse_result.get("categories", {}).get("performance", {}).get("score", 0) * 100,
-            "first_contentful_paint": audits.get("first-contentful-paint", {}).get("numericValue", 0) / 1000,
-            "largest_contentful_paint": audits.get("largest-contentful-paint", {}).get("numericValue", 0) / 1000,
-            "cumulative_layout_shift": audits.get("cumulative-layout-shift", {}).get("numericValue", 0),
-            "time_to_interactive": audits.get("interactive", {}).get("numericValue", 0) / 1000,
-            "speed_index": audits.get("speed-index", {}).get("numericValue", 0) / 1000,
-            "total_blocking_time": audits.get("total-blocking-time", {}).get("numericValue", 0),
-            "first_meaningful_paint": audits.get("first-meaningful-paint", {}).get("numericValue", 0) / 1000,
-            "max_potential_fid": audits.get("max-potential-fid", {}).get("numericValue", 0)
+            "strategy": lighthouse_result.get("configSettings", EMPTY_DICT).get("formFactor", ""),
+            "performance_score": lighthouse_result.get("categories", EMPTY_DICT).get("performance", EMPTY_DICT).get("score", 0) * 100,
+            "first_contentful_paint": audits.get("first-contentful-paint", EMPTY_DICT).get("numericValue", 0) / 1000,
+            "largest_contentful_paint": audits.get("largest-contentful-paint", EMPTY_DICT).get("numericValue", 0) / 1000,
+            "cumulative_layout_shift": audits.get("cumulative-layout-shift", EMPTY_DICT).get("numericValue", 0),
+            "time_to_interactive": audits.get("interactive", EMPTY_DICT).get("numericValue", 0) / 1000,
+            "speed_index": audits.get("speed-index", EMPTY_DICT).get("numericValue", 0) / 1000,
+            "total_blocking_time": audits.get("total-blocking-time", EMPTY_DICT).get("numericValue", 0),
+            "first_meaningful_paint": audits.get("first-meaningful-paint", EMPTY_DICT).get("numericValue", 0) / 1000,
+            "max_potential_fid": audits.get("max-potential-fid", EMPTY_DICT).get("numericValue", 0)
         }
         
         return metrics
@@ -201,14 +212,8 @@ def analyze_performance(metrics: Dict[str, Any], thresholds: Dict[str, float]) -
                 analysis["issues"].append(f"{metric}: {value:.2f} (threshold: {threshold})")
                 
                 # Provide specific recommendations
-                if metric == "first_contentful_paint":
-                    analysis["recommendations"].append("Optimize critical rendering path")
-                elif metric == "largest_contentful_paint":
-                    analysis["recommendations"].append("Optimize image loading and rendering")
-                elif metric == "cumulative_layout_shift":
-                    analysis["recommendations"].append("Fix layout shifts and use proper image dimensions")
-                elif metric == "time_to_interactive":
-                    analysis["recommendations"].append("Reduce JavaScript execution time")
+                if metric in RECOMMENDATION_MAP:
+                    analysis["recommendations"].append(RECOMMENDATION_MAP[metric])
     
     return analysis
 
@@ -274,7 +279,12 @@ Overall Score: {analysis['overall_score']}
 # =============================================================================
 # MAIN EXECUTION
 # =============================================================================
-async def run_strategy_test(session: aiohttp.ClientSession, url: str, api_key: str, strategy: str) -> Dict[str, Any]:
+async def run_strategy_test(
+    session: aiohttp.ClientSession,
+    url: str,
+    api_key: str,
+    strategy: str
+) -> Optional[Tuple[Dict[str, Any], Dict[str, Any]]]:
     """
     Run a single strategy test asynchronously and process results.
     """
@@ -306,7 +316,7 @@ async def run_strategy_test(session: aiohttp.ClientSession, url: str, api_key: s
     else:
         print("  ✓ All metrics within thresholds")
 
-    return metrics
+    return metrics, analysis
 
 async def async_main():
     """
@@ -336,21 +346,21 @@ async def async_main():
         results = await asyncio.gather(*tasks)
 
     # Filter out None results
-    all_metrics = [r for r in results if r is not None]
+    valid_results = [r for r in results if r is not None]
     
     # Save metrics to CSV
+    all_metrics = [r[0] for r in valid_results]
     if all_metrics:
         save_metrics_to_csv(all_metrics, OUTPUT_FILE)
         print(f"\n💾 Metrics saved to {OUTPUT_FILE}")
     
     # Generate and display final report
-    if all_metrics:
+    if valid_results:
         print("\n" + "=" * 70)
         print("FINAL PERFORMANCE REPORT")
         print("=" * 70)
         
-        for i, metrics in enumerate(all_metrics):
-            analysis = analyze_performance(metrics, PERFORMANCE_THRESHOLDS)
+        for metrics, analysis in valid_results:
             strategy = metrics.get('strategy', 'unknown')
 
             print(f"\n{strategy.upper()} ANALYSIS:")
