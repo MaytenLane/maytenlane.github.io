@@ -9,7 +9,6 @@ This script monitors website performance using Google PageSpeed Insights API
 and provides actionable insights for optimization.
 """
 
-import requests
 import aiohttp
 import asyncio
 import json
@@ -75,39 +74,32 @@ def load_api_key() -> str:
 # =============================================================================
 # API COMMUNICATION
 # =============================================================================
-def test_page_speed(url: str, api_key: str, strategy: str = "mobile") -> Dict[str, Any]:
+
+
+async def test_page_speed(
+    url: str, api_key: str, strategy: str = "mobile"
+) -> Dict[str, Any]:
     """
     Test page speed using Google PageSpeed Insights API.
-    
+
     Args:
         url: Website URL to test
         api_key: Google PageSpeed API key
         strategy: Testing strategy ('mobile' or 'desktop')
-        
+
     Returns:
         Dict containing API response or error information
     """
-    if not api_key:
-        return {"error": "No API key provided"}
-    
-    api_url = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed"
-    params = {
-        "url": url,
-        "key": api_key,
-        "strategy": strategy,
-        "category": "performance",
-        "utm_source": "maytenlane-performance-monitor"
-    }
-    
-    try:
-        response = requests.get(api_url, params=params, timeout=30)
-        response.raise_for_status()
-        return response.json()
-    except requests.exceptions.RequestException as e:
-        return {"error": f"API request failed: {e}"}
+    async with aiohttp.ClientSession() as session:
+        return await test_page_speed_async(session, url, api_key, strategy)
 
 
-async def test_page_speed_async(session: aiohttp.ClientSession, url: str, api_key: str, strategy: str = "mobile") -> Dict[str, Any]:
+async def test_page_speed_async(
+    session: aiohttp.ClientSession,
+    url: str,
+    api_key: str,
+    strategy: str = "mobile"
+) -> Dict[str, Any]:
     """
     Test page speed using Google PageSpeed Insights API asynchronously.
 
