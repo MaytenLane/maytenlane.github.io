@@ -18,6 +18,12 @@ from typing import Dict, Any, List, Tuple, Optional
 from pathlib import Path
 import os
 
+try:
+    import uvloop
+    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+except ImportError:
+    pass
+
 # =============================================================================
 # CONFIGURATION CONSTANTS
 # =============================================================================
