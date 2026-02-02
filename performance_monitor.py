@@ -358,7 +358,7 @@ async def async_main():
         print("FINAL PERFORMANCE REPORT")
         print("=" * 70)
         
-        # Optimization: Reuse analysis from test phase to avoid redundant computation
+        # Optimization: Reuse analysis from test phase to avoid recomputation
         for metrics, analysis in valid_results:
             strategy = metrics.get('strategy', 'unknown')
 
