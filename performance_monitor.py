@@ -179,17 +179,20 @@ def extract_core_web_vitals(data: Dict[str, Any]) -> Dict[str, Any]:
     except Exception as e:
         return {"error": f"Failed to extract metrics: {e}"}
 
-def analyze_performance(metrics: Dict[str, Any], thresholds: Dict[str, float]) -> Dict[str, Any]:
+def analyze_performance(metrics: Dict[str, Any], thresholds: Optional[Dict[str, float]] = None) -> Dict[str, Any]:
     """
     Analyze performance metrics against defined thresholds.
     
     Args:
         metrics: Performance metrics dictionary
-        thresholds: Dictionary of performance thresholds
+        thresholds: Dictionary of performance thresholds (defaults to global PERFORMANCE_THRESHOLDS)
         
     Returns:
         Dict containing analysis results and recommendations
     """
+    if thresholds is None:
+        thresholds = PERFORMANCE_THRESHOLDS
+
     if "error" in metrics:
         return metrics
     
@@ -301,7 +304,7 @@ async def run_strategy_test(
         return None
 
     # Analyze performance
-    analysis = analyze_performance(metrics, PERFORMANCE_THRESHOLDS)
+    analysis = analyze_performance(metrics)
 
     # Display results
     score = analysis.get('overall_score', 'N/A')
