@@ -38,6 +38,17 @@ PERFORMANCE_THRESHOLDS = {
     "total_blocking_time": 300          # milliseconds
 }
 
+# Recommendations for performance issues
+RECOMMENDATION_MAP = {
+    "first_contentful_paint": "Optimize critical rendering path",
+    "largest_contentful_paint": "Optimize image loading and rendering",
+    "cumulative_layout_shift": "Fix layout shifts and use proper image dimensions",
+    "time_to_interactive": "Reduce JavaScript execution time"
+}
+
+# Shared empty dictionary to avoid repeated allocations
+EMPTY_DICT = {}
+
 # =============================================================================
 # CONFIGURATION MANAGEMENT
 # =============================================================================
@@ -148,22 +159,22 @@ def extract_core_web_vitals(data: Dict[str, Any]) -> Dict[str, Any]:
         return data
     
     try:
-        lighthouse_result = data.get("lighthouseResult", {})
-        audits = lighthouse_result.get("audits", {})
+        lighthouse_result = data.get("lighthouseResult", EMPTY_DICT)
+        audits = lighthouse_result.get("audits", EMPTY_DICT)
         
         metrics = {
             "timestamp": datetime.now().isoformat(),
             "url": data.get("id", ""),
-            "strategy": lighthouse_result.get("configSettings", {}).get("formFactor", ""),
-            "performance_score": lighthouse_result.get("categories", {}).get("performance", {}).get("score", 0) * 100,
-            "first_contentful_paint": audits.get("first-contentful-paint", {}).get("numericValue", 0) / 1000,
-            "largest_contentful_paint": audits.get("largest-contentful-paint", {}).get("numericValue", 0) / 1000,
-            "cumulative_layout_shift": audits.get("cumulative-layout-shift", {}).get("numericValue", 0),
-            "time_to_interactive": audits.get("interactive", {}).get("numericValue", 0) / 1000,
-            "speed_index": audits.get("speed-index", {}).get("numericValue", 0) / 1000,
-            "total_blocking_time": audits.get("total-blocking-time", {}).get("numericValue", 0),
-            "first_meaningful_paint": audits.get("first-meaningful-paint", {}).get("numericValue", 0) / 1000,
-            "max_potential_fid": audits.get("max-potential-fid", {}).get("numericValue", 0)
+            "strategy": lighthouse_result.get("configSettings", EMPTY_DICT).get("formFactor", ""),
+            "performance_score": lighthouse_result.get("categories", EMPTY_DICT).get("performance", EMPTY_DICT).get("score", 0) * 100,
+            "first_contentful_paint": audits.get("first-contentful-paint", EMPTY_DICT).get("numericValue", 0) / 1000,
+            "largest_contentful_paint": audits.get("largest-contentful-paint", EMPTY_DICT).get("numericValue", 0) / 1000,
+            "cumulative_layout_shift": audits.get("cumulative-layout-shift", EMPTY_DICT).get("numericValue", 0),
+            "time_to_interactive": audits.get("interactive", EMPTY_DICT).get("numericValue", 0) / 1000,
+            "speed_index": audits.get("speed-index", EMPTY_DICT).get("numericValue", 0) / 1000,
+            "total_blocking_time": audits.get("total-blocking-time", EMPTY_DICT).get("numericValue", 0),
+            "first_meaningful_paint": audits.get("first-meaningful-paint", EMPTY_DICT).get("numericValue", 0) / 1000,
+            "max_potential_fid": audits.get("max-potential-fid", EMPTY_DICT).get("numericValue", 0)
         }
         
         return metrics
@@ -201,14 +212,8 @@ def analyze_performance(metrics: Dict[str, Any], thresholds: Dict[str, float]) -
                 analysis["issues"].append(f"{metric}: {value:.2f} (threshold: {threshold})")
                 
                 # Provide specific recommendations
-                if metric == "first_contentful_paint":
-                    analysis["recommendations"].append("Optimize critical rendering path")
-                elif metric == "largest_contentful_paint":
-                    analysis["recommendations"].append("Optimize image loading and rendering")
-                elif metric == "cumulative_layout_shift":
-                    analysis["recommendations"].append("Fix layout shifts and use proper image dimensions")
-                elif metric == "time_to_interactive":
-                    analysis["recommendations"].append("Reduce JavaScript execution time")
+                if metric in RECOMMENDATION_MAP:
+                    analysis["recommendations"].append(RECOMMENDATION_MAP[metric])
     
     return analysis
 
