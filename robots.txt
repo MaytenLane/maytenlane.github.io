@@ -25,7 +25,6 @@ Crawl-delay: 1
 
 # RESTRICTED ACCESS
 # Block access to administrative and system files
-Disallow: /apply_cloudflare_settings.py
 Disallow: /llm.txt
 
 # SITEMAP LOCATION
