@@ -15,7 +15,7 @@ import asyncio
 import json
 import csv
 from datetime import datetime
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Tuple, Optional
 from pathlib import Path
 import os
 
@@ -279,7 +279,12 @@ Overall Score: {analysis['overall_score']}
 # =============================================================================
 # MAIN EXECUTION
 # =============================================================================
-async def run_strategy_test(session: aiohttp.ClientSession, url: str, api_key: str, strategy: str) -> Dict[str, Any]:
+async def run_strategy_test(
+    session: aiohttp.ClientSession,
+    url: str,
+    api_key: str,
+    strategy: str
+) -> Optional[Tuple[Dict[str, Any], Dict[str, Any]]]:
     """
     Run a single strategy test asynchronously and process results.
     """
@@ -311,7 +316,7 @@ async def run_strategy_test(session: aiohttp.ClientSession, url: str, api_key: s
     else:
         print("  ✓ All metrics within thresholds")
 
-    return metrics
+    return metrics, analysis
 
 async def async_main():
     """
@@ -341,21 +346,21 @@ async def async_main():
         results = await asyncio.gather(*tasks)
 
     # Filter out None results
-    all_metrics = [r for r in results if r is not None]
+    valid_results = [r for r in results if r is not None]
     
     # Save metrics to CSV
+    all_metrics = [r[0] for r in valid_results]
     if all_metrics:
         save_metrics_to_csv(all_metrics, OUTPUT_FILE)
         print(f"\n💾 Metrics saved to {OUTPUT_FILE}")
     
     # Generate and display final report
-    if all_metrics:
+    if valid_results:
         print("\n" + "=" * 70)
         print("FINAL PERFORMANCE REPORT")
         print("=" * 70)
         
-        for i, metrics in enumerate(all_metrics):
-            analysis = analyze_performance(metrics, PERFORMANCE_THRESHOLDS)
+        for metrics, analysis in valid_results:
             strategy = metrics.get('strategy', 'unknown')
 
             print(f"\n{strategy.upper()} ANALYSIS:")
