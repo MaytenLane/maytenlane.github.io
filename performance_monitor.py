@@ -293,7 +293,7 @@ async def run_strategy_test(session: aiohttp.ClientSession, url: str, api_key: s
         return None
 
     # Analyze performance
-    analysis = analyze_performance(metrics)
+    analysis = analyze_performance(metrics, PERFORMANCE_THRESHOLDS)
 
     # Display results
     score = analysis.get('overall_score', 'N/A')
@@ -350,7 +350,7 @@ async def async_main():
         print("=" * 70)
         
         for i, metrics in enumerate(all_metrics):
-            analysis = analyze_performance(metrics)
+            analysis = analyze_performance(metrics, PERFORMANCE_THRESHOLDS)
             strategy = metrics.get('strategy', 'unknown')
 
             print(f"\n{strategy.upper()} ANALYSIS:")
