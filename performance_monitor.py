@@ -13,6 +13,7 @@ import json
 import csv
 from datetime import datetime
 from typing import Dict, Any, List, Tuple, Optional
+import functools
 from pathlib import Path
 import os
 
@@ -196,11 +197,19 @@ def analyze_performance(
 # Data Persistence
 
 
-def save_metrics_to_csv(metrics: List[Dict[str, Any]], filename: str):
-    """Save performance metrics to CSV file for historical tracking."""
+async def save_metrics_to_csv(metrics: List[Dict[str, Any]], filename: str):
+    """Save performance metrics to CSV file asynchronously."""
     if not metrics:
         return
 
+    loop = asyncio.get_running_loop()
+    await loop.run_in_executor(
+        None, functools.partial(_save_metrics_to_csv_sync, metrics, filename)
+    )
+
+
+def _save_metrics_to_csv_sync(metrics: List[Dict[str, Any]], filename: str):
+    """Internal synchronous function to save metrics to CSV."""
     fieldnames = metrics[0].keys()
 
     with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
@@ -319,7 +328,7 @@ async def async_main():
     # Save metrics to CSV
     all_metrics = [r[0] for r in valid_results]
     if all_metrics:
-        save_metrics_to_csv(all_metrics, OUTPUT_FILE)
+        await save_metrics_to_csv(all_metrics, OUTPUT_FILE)
         print(f"\n💾 Metrics saved to {OUTPUT_FILE}")
 
     # Generate and display final report
