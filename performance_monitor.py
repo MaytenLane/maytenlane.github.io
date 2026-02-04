@@ -51,20 +51,29 @@ EMPTY_DICT = {}
 # Configuration Management
 
 
-def load_api_key() -> str:
-    """Load Google PageSpeed API key from environment or config file."""
-    api_key = os.getenv('GOOGLE_PAGESPEED_API_KEY')
-    if not api_key:
-        config_file = Path('.pagespeed_config.json')
-        if config_file.exists():
-            try:
-                with open(config_file, 'r') as f:
-                    config = json.load(f)
-                    api_key = config.get('api_key')
-            except (json.JSONDecodeError, IOError):
-                pass
+def _load_api_key_sync_file() -> Optional[str]:
+    """Load API key from config file synchronously."""
+    config_file = Path('.pagespeed_config.json')
+    if config_file.exists():
+        try:
+            with open(config_file, 'r') as f:
+                config = json.load(f)
+                return config.get('api_key')
+        except (json.JSONDecodeError, IOError):
+            pass
+    return None
 
-    return api_key
+
+async def load_api_key() -> Optional[str]:
+    """Load Google PageSpeed API key from environment or config file."""
+    # Check environment variable first (non-blocking)
+    api_key = os.getenv('GOOGLE_PAGESPEED_API_KEY')
+    if api_key:
+        return api_key
+
+    # Offload file I/O to executor to avoid blocking the event loop
+    loop = asyncio.get_running_loop()
+    return await loop.run_in_executor(None, _load_api_key_sync_file)
 
 
 # API Communication
@@ -292,7 +301,7 @@ async def async_main():
     print("=" * 70)
 
     # Load API key
-    api_key = load_api_key()
+    api_key = await load_api_key()
     if not api_key:
         print("WARNING: No Google PageSpeed API key found")
         print("\nPlease set the following environment variable:")
