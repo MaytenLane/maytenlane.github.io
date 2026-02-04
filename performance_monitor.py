@@ -45,6 +45,18 @@ RECOMMENDATION_MAP = {
     "time_to_interactive": "Reduce JavaScript execution time"
 }
 
+# Metric mapping: (internal_key, audit_key, divisor)
+METRIC_MAP = (
+    ("first_contentful_paint", "first-contentful-paint", 1000),
+    ("largest_contentful_paint", "largest-contentful-paint", 1000),
+    ("cumulative_layout_shift", "cumulative-layout-shift", 1),
+    ("time_to_interactive", "interactive", 1000),
+    ("speed_index", "speed-index", 1000),
+    ("total_blocking_time", "total-blocking-time", 1),
+    ("first_meaningful_paint", "first-meaningful-paint", 1000),
+    ("max_potential_fid", "max-potential-fid", 1),
+)
+
 # Shared empty dictionary to avoid repeated allocations
 EMPTY_DICT = {}
 
@@ -150,19 +162,7 @@ def extract_core_web_vitals(data: Dict[str, Any]) -> Dict[str, Any]:
             "performance_score": performance.get("score", 0) * 100,
         }
 
-        # Metric mapping: (internal_key, audit_key, divisor)
-        metric_map = [
-            ("first_contentful_paint", "first-contentful-paint", 1000),
-            ("largest_contentful_paint", "largest-contentful-paint", 1000),
-            ("cumulative_layout_shift", "cumulative-layout-shift", 1),
-            ("time_to_interactive", "interactive", 1000),
-            ("speed_index", "speed-index", 1000),
-            ("total_blocking_time", "total-blocking-time", 1),
-            ("first_meaningful_paint", "first-meaningful-paint", 1000),
-            ("max_potential_fid", "max-potential-fid", 1),
-        ]
-
-        for internal_key, audit_key, divisor in metric_map:
+        for internal_key, audit_key, divisor in METRIC_MAP:
             value = audits.get(audit_key, EMPTY_DICT).get("numericValue", 0)
             metrics[internal_key] = value / divisor
 
