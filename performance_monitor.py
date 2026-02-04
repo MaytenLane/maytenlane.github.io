@@ -71,11 +71,17 @@ def load_api_key() -> str:
 
 
 async def test_page_speed(
-    url: str, api_key: str, strategy: str = "mobile"
+    url: str,
+    api_key: str,
+    strategy: str = "mobile",
+    session: Optional[aiohttp.ClientSession] = None
 ) -> Dict[str, Any]:
     """Test page speed using Google PageSpeed Insights API."""
-    async with aiohttp.ClientSession() as session:
+    if session:
         return await test_page_speed_async(session, url, api_key, strategy)
+
+    async with aiohttp.ClientSession() as new_session:
+        return await test_page_speed_async(new_session, url, api_key, strategy)
 
 
 async def test_page_speed_async(
