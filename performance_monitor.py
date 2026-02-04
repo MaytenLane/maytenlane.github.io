@@ -48,6 +48,9 @@ RECOMMENDATION_MAP = {
 # Shared empty dictionary to avoid repeated allocations
 EMPTY_DICT = {}
 
+# API Timeout setting to avoid repeated instantiation
+API_TIMEOUT = aiohttp.ClientTimeout(total=30)
+
 # Configuration Management
 
 
@@ -98,9 +101,8 @@ async def test_page_speed_async(
     }
 
     try:
-        timeout_settings = aiohttp.ClientTimeout(total=30)
         async with session.get(
-            api_url, params=params, timeout=timeout_settings
+            api_url, params=params, timeout=API_TIMEOUT
         ) as response:
             response.raise_for_status()
             return await response.json()
