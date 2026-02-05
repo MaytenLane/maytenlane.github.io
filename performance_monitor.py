@@ -96,26 +96,12 @@ async def load_api_key() -> Optional[str]:
 
 
 async def test_page_speed(
-    url: str,
-    api_key: str,
-    strategy: str = "mobile",
-    session: Optional[aiohttp.ClientSession] = None
-) -> Dict[str, Any]:
-    """Test page speed using Google PageSpeed Insights API."""
-    if session:
-        return await test_page_speed_async(session, url, api_key, strategy)
-
-    async with aiohttp.ClientSession() as new_session:
-        return await test_page_speed_async(new_session, url, api_key, strategy)
-
-
-async def test_page_speed_async(
     session: aiohttp.ClientSession,
     url: str,
     api_key: str,
     strategy: str = "mobile"
 ) -> Dict[str, Any]:
-    """Test page speed using Google PageSpeed Insights API asynchronously."""
+    """Test page speed using Google PageSpeed Insights API."""
     if not api_key:
         return {"error": "No API key provided"}
 
@@ -292,7 +278,7 @@ async def run_strategy_test(
     print(f"\n📱 Starting {strategy} performance test...")
 
     # Test page speed
-    result = await test_page_speed_async(session, url, api_key, strategy)
+    result = await test_page_speed(session, url, api_key, strategy)
     if "error" in result:
         print(f"✗ Error testing {strategy}: {result['error']}")
         return None
