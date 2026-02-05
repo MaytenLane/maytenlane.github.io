@@ -47,6 +47,7 @@ RECOMMENDATION_MAP = {
 }
 
 # Metric mapping: (internal_key, audit_key, divisor)
+# Defined as a module-level constant to avoid repeated allocation
 METRIC_MAP = (
     ("first_contentful_paint", "first-contentful-paint", 1000),
     ("largest_contentful_paint", "largest-contentful-paint", 1000),
