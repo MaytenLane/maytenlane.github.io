@@ -52,7 +52,11 @@
 
   <!-- Resource preloading -->
   <link rel="preload" href="/style.css" as="style">
-  <link rel="preload" href="/assets/logos/mayten-lane-g-on-clear-1000x1000.png" as="image">
+  <link rel="preload" href="/assets/logos/mayten-lane-g-on-clear-1000x1000.png" as="image"
+    imagesrcset="/assets/logos/mayten-lane-g-on-clear-200x200.png 200w,
+                 /assets/logos/mayten-lane-g-on-clear-500x500.png 500w,
+                 /assets/logos/mayten-lane-g-on-clear-1000x1000.png 1000w"
+    imagesizes="(max-width: 500px) 80vw, 400px">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/style.css">
@@ -83,6 +87,10 @@
     <!-- Header section -->
     <header role="banner">
       <img src="assets/logos/mayten-lane-g-on-clear-1000x1000.png"
+        srcset="assets/logos/mayten-lane-g-on-clear-200x200.png 200w,
+                assets/logos/mayten-lane-g-on-clear-500x500.png 500w,
+                assets/logos/mayten-lane-g-on-clear-1000x1000.png 1000w"
+        sizes="(max-width: 500px) 80vw, 400px"
         alt="Mayten Lane logo - A startup shop for growing technology companies" title="Mayten Lane" class="logo"
         height="400" width="400" loading="eager" decoding="async">
     </header>
