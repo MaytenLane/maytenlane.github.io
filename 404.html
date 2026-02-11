@@ -40,7 +40,11 @@
   <link rel="apple-touch-icon" href="/assets/logos/mayten-lane-g-on-p-200x200.png">
   
   <link rel="preload" href="/style.css" as="style">
-  <link rel="preload" href="/assets/logos/mayten-lane-g-on-clear-1000x1000.png" as="image">
+  <link rel="preload" href="/assets/logos/mayten-lane-g-on-clear-1000x1000.png" as="image"
+    imagesrcset="/assets/logos/mayten-lane-g-on-clear-200x200.png 200w,
+                 /assets/logos/mayten-lane-g-on-clear-500x500.png 500w,
+                 /assets/logos/mayten-lane-g-on-clear-1000x1000.png 1000w"
+    imagesizes="(max-width: 600px) 80vw, 400px">
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/style.css">
@@ -55,6 +59,10 @@
     <!-- Header section -->
     <header role="banner">
       <img src="assets/logos/mayten-lane-g-on-clear-1000x1000.png"
+           srcset="assets/logos/mayten-lane-g-on-clear-200x200.png 200w,
+                   assets/logos/mayten-lane-g-on-clear-500x500.png 500w,
+                   assets/logos/mayten-lane-g-on-clear-1000x1000.png 1000w"
+           sizes="(max-width: 600px) 80vw, 400px"
            alt="Mayten Lane logo - A startup shop for growing technology companies" 
            title="Mayten Lane" 
            class="logo" 
