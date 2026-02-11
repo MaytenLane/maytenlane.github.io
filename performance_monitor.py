@@ -219,10 +219,7 @@ def _save_metrics_to_csv_sync(metrics: List[Dict[str, Any]], filename: str):
     with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
-        # Use loop to write rows individually, allowing frequent GIL release
-        # to prevent blocking the event loop in the main thread.
-        for row in metrics:
-            writer.writerow(row)
+        writer.writerows(metrics)
 
 
 # Reporting and Output
