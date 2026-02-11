@@ -120,8 +120,12 @@ async def test_page_speed(
             api_url, params=params, timeout=API_TIMEOUT
         ) as response:
             response.raise_for_status()
-            return await response.json()
-    except aiohttp.ClientError as e:
+            # Read response body as text first
+            text = await response.text()
+            # Offload JSON parsing to executor to avoid blocking the event loop
+            loop = asyncio.get_running_loop()
+            return await loop.run_in_executor(None, json.loads, text)
+    except (aiohttp.ClientError, json.JSONDecodeError) as e:
         return {"error": f"API request failed: {e}"}
     except asyncio.TimeoutError:
         return {"error": "API request timed out"}
@@ -219,10 +223,7 @@ def _save_metrics_to_csv_sync(metrics: List[Dict[str, Any]], filename: str):
     with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
-        # Use loop to write rows individually, allowing frequent GIL release
-        # to prevent blocking the event loop in the main thread.
-        for row in metrics:
-            writer.writerow(row)
+        writer.writerows(metrics)
 
 
 # Reporting and Output
