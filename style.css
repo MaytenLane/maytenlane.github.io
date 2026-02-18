@@ -44,7 +44,7 @@
    ========================================================================== */
 .skip-link {
   position: absolute !important;
-  top: -40px !important;
+  top: 6px !important;
   left: 6px !important;
   z-index: 1000;
   background: var(--color-primary);
@@ -52,13 +52,14 @@
   padding: 8px;
   text-decoration: none;
   border-radius: var(--border-radius);
-  transition: top var(--transition-duration) ease;
+  transform: translateY(-50px);
+  transition: transform var(--transition-duration) ease;
   opacity: 0;
   pointer-events: none;
 }
 
 .skip-link:focus {
-  top: 6px !important;
+  transform: translateY(0);
   opacity: 1;
   pointer-events: auto;
 }
