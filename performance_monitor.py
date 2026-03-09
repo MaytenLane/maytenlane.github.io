@@ -65,6 +65,13 @@ EMPTY_DICT = {}
 # API Timeout setting to avoid repeated instantiation
 API_TIMEOUT = aiohttp.ClientTimeout(total=30)
 
+
+async def async_print(*args, **kwargs):
+    """Print to stdout asynchronously by offloading to a thread pool."""
+    loop = asyncio.get_running_loop()
+    await loop.run_in_executor(None, functools.partial(print, *args, **kwargs))
+
+
 # Configuration Management
 
 
@@ -257,17 +264,17 @@ Overall Score: {analysis['overall_score']}
     return "".join(report_parts)
 
 
-def print_strategy_results(strategy: str, analysis: Dict[str, Any]):
+async def print_strategy_results(strategy: str, analysis: Dict[str, Any]):
     """Print summary results for a specific strategy."""
     score = analysis.get('overall_score', 'N/A')
     issues_count = len(analysis.get('issues', []))
 
-    print(f"📱 {strategy.capitalize()} Results:")
-    print(f"  Performance Score: {score}")
+    await async_print(f"📱 {strategy.capitalize()} Results:")
+    await async_print(f"  Performance Score: {score}")
     if issues_count > 0:
-        print(f"  Issues Found: {issues_count}")
+        await async_print(f"  Issues Found: {issues_count}")
     else:
-        print("  ✓ All metrics within thresholds")
+        await async_print("  ✓ All metrics within thresholds")
 
 
 # Main Execution
@@ -280,48 +287,50 @@ async def run_strategy_test(
     strategy: str
 ) -> Optional[Tuple[Dict[str, Any], Dict[str, Any]]]:
     """Run a single strategy test asynchronously and process results."""
-    print(f"\n📱 Starting {strategy} performance test...")
+    await async_print(f"\n📱 Starting {strategy} performance test...")
 
     # Test page speed
     result = await test_page_speed(session, url, api_key, strategy)
     if "error" in result:
-        print(f"✗ Error testing {strategy}: {result['error']}")
+        await async_print(f"✗ Error testing {strategy}: {result['error']}")
         return None
 
     # Extract metrics
     metrics = extract_core_web_vitals(result)
     if "error" in metrics:
-        print(f"✗ Error extracting metrics for {strategy}: {metrics['error']}")
+        await async_print(
+            f"✗ Error extracting metrics for {strategy}: {metrics['error']}"
+        )
         return None
 
     # Analyze performance
     analysis = analyze_performance(metrics)
 
-    print_strategy_results(strategy, analysis)
+    await print_strategy_results(strategy, analysis)
 
     return metrics, analysis
 
 
 async def async_main():
     """Async main function to run performance monitoring."""
-    print("=" * 70)
-    print("PERFORMANCE MONITORING FOR MAYTEN LANE WEBSITE")
-    print("=" * 70)
+    await async_print("=" * 70)
+    await async_print("PERFORMANCE MONITORING FOR MAYTEN LANE WEBSITE")
+    await async_print("=" * 70)
 
     # Load API key
     api_key = await load_api_key()
     if not api_key:
-        print("WARNING: No Google PageSpeed API key found")
-        print("\nPlease set the following environment variable:")
-        print("  GOOGLE_PAGESPEED_API_KEY")
-        print("\nOr create a .pagespeed_config.json file")
+        await async_print("WARNING: No Google PageSpeed API key found")
+        await async_print("\nPlease set the following environment variable:")
+        await async_print("  GOOGLE_PAGESPEED_API_KEY")
+        await async_print("\nOr create a .pagespeed_config.json file")
         return
 
     # Test both mobile and desktop strategies
     strategies = ["mobile", "desktop"]
 
-    print(f"\nTesting website: {WEBSITE_URL}")
-    print("-" * 50)
+    await async_print(f"\nTesting website: {WEBSITE_URL}")
+    await async_print("-" * 50)
 
     async with aiohttp.ClientSession() as session:
         tasks = [
@@ -337,23 +346,23 @@ async def async_main():
     all_metrics = [r[0] for r in valid_results]
     if all_metrics:
         await save_metrics_to_csv(all_metrics, OUTPUT_FILE)
-        print(f"\n💾 Metrics saved to {OUTPUT_FILE}")
+        await async_print(f"\n💾 Metrics saved to {OUTPUT_FILE}")
 
     # Generate and display final report
     if valid_results:
-        print("\n" + "=" * 70)
-        print("FINAL PERFORMANCE REPORT")
-        print("=" * 70)
+        await async_print("\n" + "=" * 70)
+        await async_print("FINAL PERFORMANCE REPORT")
+        await async_print("=" * 70)
 
         # Optimization: Reuse analysis from test phase to avoid recomputation
         for metrics, analysis in valid_results:
             strategy = metrics.get('strategy', 'unknown')
 
-            print(f"\n{strategy.upper()} ANALYSIS:")
-            print(generate_performance_report(analysis))
+            await async_print(f"\n{strategy.upper()} ANALYSIS:")
+            await async_print(generate_performance_report(analysis))
 
-    print("\n" + "=" * 70)
-    print("Performance monitoring complete!")
+    await async_print("\n" + "=" * 70)
+    await async_print("Performance monitoring complete!")
 
 
 def main():
