@@ -67,7 +67,7 @@ API_TIMEOUT = aiohttp.ClientTimeout(total=30)
 
 
 async def async_print(*args, **kwargs):
-    """Print to stdout directly (sync print is generally fast)."""
+    """Print to stdout directly."""
     print(*args, **kwargs)
 
 
