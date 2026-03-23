@@ -67,9 +67,8 @@ API_TIMEOUT = aiohttp.ClientTimeout(total=30)
 
 
 async def async_print(*args, **kwargs):
-    """Print to stdout asynchronously by offloading to a thread pool."""
-    loop = asyncio.get_running_loop()
-    await loop.run_in_executor(None, functools.partial(print, *args, **kwargs))
+    """Print to stdout directly (sync print is generally fast)."""
+    print(*args, **kwargs)
 
 
 # Configuration Management
