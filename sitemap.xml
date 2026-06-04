@@ -10,17 +10,18 @@
   <!-- Homepage - Highest priority for search engines -->
   <url>
     <loc>https://www.maytenlane.com/</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- 404 Error Page - Low priority but included for completeness -->
+  <!-- Plaintext Sitemap/Map for AI Crawlers & LLM Agents -->
   <url>
-    <loc>https://www.maytenlane.com/404.html</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.1</priority>
+    <loc>https://www.maytenlane.com/llms.txt</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
+
 
 </urlset>

@@ -9,14 +9,14 @@
    ========================================================================== */
 :root {
   /* Color Palette */
-  --color-primary: #668B7C;
-  --color-secondary: #B66868;
-  --color-background: #FFDAB9;
-  --color-text: #668B7C;
+  --color-primary: #EFECE4;
+  --color-secondary: #6E8A7D;
+  --color-background: #151C19;
+  --color-text: #EFECE4;
   
   /* Typography */
   --font-family-primary: 'Georgia', 'Times New Roman', serif;
-  --font-size-base: 18px;
+  --font-size-base: clamp(16px, 1.1rem + 0.4vw, 22px);
   --font-size-small: 0.8em;
   --line-height-base: 1.6;
   
@@ -31,6 +31,7 @@
   --max-width-content: 650px;
   --border-radius: 5px;
   --transition-duration: 0.3s;
+  --logo-size: 200px;
   
   /* Accessibility */
   --min-touch-target: 44px;
@@ -48,7 +49,7 @@
   left: 6px !important;
   z-index: 1000;
   background: var(--color-primary);
-  color: white;
+  color: var(--color-background);
   padding: 8px;
   text-decoration: none;
   border-radius: var(--border-radius);
@@ -144,10 +145,9 @@ body {
    VISUAL ELEMENTS
    ========================================================================== */
 .logo {
-  height: 80%;
-  width: 80%;
-  max-width: 400px;
-  max-height: 400px;
+  width: var(--logo-size, 200px);
+  height: auto;
+  max-width: 100%;
   display: block;
   margin: 0 auto;
   object-fit: contain;
@@ -219,7 +219,6 @@ body {
    ========================================================================== */
 @media (max-width: 480px) {
   body {
-    font-size: 16px;
     margin: 0;
   }
   
@@ -234,30 +233,18 @@ body {
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
-  body {
-    font-size: var(--font-size-base);
-  }
-  
   #content {
     margin-top: 3%;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  body {
-    font-size: 20px;
-  }
-  
   #content {
     margin-top: 4%;
   }
 }
 
 @media (min-width: 992px) {
-  body {
-    font-size: 22px;
-  }
-  
   #content {
     margin-top: var(--spacing-lg);
   }
