@@ -1,49 +1,43 @@
 /* ==========================================================================
-   MAYTEN LANE - MODERN MOBILE-FIRST STYLESHEET
-   Quiet, ultra-minimalist aesthetic with WCAG AAA accessibility
+   MAYTEN LANE - STYLESHEET
+   Ultra-minimalist, quiet design with WCAG AAA accessibility
    ========================================================================== */
 
 :root {
   /* Color Palette - Extracted from SVG assets (#2C3E35 & #6E8A7D) */
   --color-primary: #EFECE4;         /* Soft Sand/Cream text */
   --color-secondary: #6E8A7D;       /* Muted Sage Green */
-  --color-secondary-hover: #A5C4B5; /* High-contrast interactive hover (Contrast ~8.8:1) */
+  --color-secondary-hover: #A5C4B5; /* High-contrast interactive hover */
   --color-background: #151C19;      /* Deep Obsidian Green */
   --color-text: #EFECE4;            /* Primary body text */
-  --color-text-muted: #B0C4BA;      /* Subtitle/byline text (Contrast >7:1) */
+  --color-text-muted: #B0C4BA;      /* Subtitle/footer text */
   --color-brand-dark: #2C3E35;      /* Deep Mayten Pine */
   --color-logo: #6E8A7D;            /* Vector logo fill in dark mode */
-  --color-card-bg: rgba(255, 255, 255, 0.03);
-  --color-border: rgba(110, 138, 125, 0.2);
 
   /* Typography Scale (Fluid clamp typography) */
   --font-family-primary: 'Georgia', 'Times New Roman', serif;
-  --font-size-h1: clamp(1.85rem, 5vw + 0.5rem, 2.65rem);     /* 29.6px -> 42.4px */
-  --font-size-tagline: clamp(1.15rem, 2.8vw + 0.4rem, 1.5rem);/* 18.4px -> 24px */
-  --font-size-byline: clamp(0.95rem, 1.8vw + 0.3rem, 1.125rem);/* 15.2px -> 18px */
-  --font-size-copyright: clamp(0.75rem, 1.2vw + 0.3rem, 0.875rem);/* 12px -> 14px */
+  --font-size-h1: clamp(1.75rem, 4.5vw, 2.5rem);           /* 28px -> 40px */
+  --font-size-subtext: clamp(1.1rem, 2.4vw + 0.3rem, 1.4rem);/* 17.6px -> 22.4px (Same for tagline and byline) */
+  --font-size-copyright: clamp(0.75rem, 1.4vw, 0.875rem); /* 12px -> 14px */
   
   --line-height-heading: 1.25;
-  --line-height-tagline: 1.45;
+  --line-height-subtext: 1.45;
   --line-height-base: 1.6;
 
   /* Layout & Spacing System */
-  --max-width-content: 620px;
-  --logo-size: clamp(80px, 18vw, 130px);
+  --max-width-content: 600px;
+  --logo-size: clamp(100px, 20vw, 150px);
   --logo-aspect-ratio: 300 / 330;
   
   --spacing-xs: 0.5rem;   /* 8px */
   --spacing-sm: 1rem;     /* 16px */
   --spacing-md: 1.5rem;   /* 24px */
-  --spacing-lg: 2.5rem;   /* 40px */
-  --spacing-xl: 4rem;     /* 64px */
+  --spacing-lg: 2.25rem;  /* 36px */
 
   /* Touch Targets & Micro-Interactions */
-  --min-touch-target: 48px;
-  --border-radius: 8px;
-  --border-radius-pill: 9999px;
-  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --min-touch-target: 44px;
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.35s ease;
   
   /* Focus Indicator */
   --focus-outline-width: 2px;
@@ -57,14 +51,12 @@
 @media (prefers-color-scheme: light) {
   :root {
     --color-primary: #2C3E35;         /* Deep Mayten Pine text (Contrast 9.2:1) */
-    --color-secondary: #3B574B;       /* Dark Sage Green (Contrast 7.3:1) */
-    --color-secondary-hover: #192B23; /* Very dark pine hover */
+    --color-secondary: #3B574B;       /* Dark Sage Green */
+    --color-secondary-hover: #192B23; /* Dark pine hover */
     --color-background: #EFECE4;      /* Soft Sand/Cream background */
     --color-text: #2C3E35;
-    --color-text-muted: #425B50;      /* Dark muted green (Contrast 7.1:1) */
+    --color-text-muted: #425B50;      /* Muted dark green */
     --color-logo: #2C3E35;            /* Logo fill in light mode */
-    --color-card-bg: rgba(44, 62, 53, 0.04);
-    --color-border: rgba(44, 62, 53, 0.15);
     --focus-outline-color: #2C3E35;
   }
 }
@@ -79,10 +71,10 @@
   z-index: 1000;
   background: var(--color-primary);
   color: var(--color-background);
-  padding: 10px 16px;
+  padding: 8px 14px;
   text-decoration: none;
   font-weight: 600;
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   transform: translateY(-100px);
   transition: transform var(--transition-fast) ease, opacity var(--transition-fast) ease;
   opacity: 0;
@@ -113,7 +105,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  min-height: 100dvh; /* Mobile viewport height fix */
+  min-height: 100dvh;
   margin: 0;
   padding: var(--spacing-md) var(--spacing-sm);
   font-family: var(--font-family-primary);
@@ -178,7 +170,7 @@ footer[role="contentinfo"] {
 }
 
 .logo:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 /* ==========================================================================
@@ -189,116 +181,104 @@ h1 {
   font-size: var(--font-size-h1);
   line-height: var(--line-height-heading);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   margin: 0 0 var(--spacing-sm) 0;
   color: var(--color-text);
 }
 
-.tagline {
+/* Tagline and Byline share identical type, size, weight, and color */
+.subtext {
   font-family: var(--font-family-primary);
-  font-size: var(--font-size-tagline);
-  line-height: var(--line-height-tagline);
+  font-size: var(--font-size-subtext);
+  line-height: var(--line-height-subtext);
   font-weight: 400;
-  margin: 0 0 var(--spacing-md) 0;
+  margin: 0 0 var(--spacing-xs) 0;
   color: var(--color-text);
   max-width: 480px;
-  text-wrap: balance; /* Modern CSS auto-balancing for legibility without hard <br> */
+  text-wrap: balance;
 }
 
-.byline {
-  font-family: var(--font-family-primary);
-  font-size: var(--font-size-byline);
-  line-height: var(--line-height-base);
-  font-weight: 400;
-  margin: 0 0 var(--spacing-lg) 0;
-  color: var(--color-text-muted);
+.subtext + .subtext {
+  margin-top: 0.25rem;
+  margin-bottom: var(--spacing-lg);
 }
 
-/* ==========================================================================
-   INTERACTIVE LINKS & ANCHORS
-   ========================================================================== */
-#content a {
+/* Hyperlinks inside tagline/byline - NO underline */
+#content .subtext a,
+#content a.subtext-link {
   color: var(--color-text);
   text-decoration: none;
-  border-bottom: 1px solid var(--color-border);
-  transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
-  padding-bottom: 2px;
+  border-bottom: none;
+  transition: color var(--transition-fast);
 }
 
-#content a:hover,
-#content a:focus {
+#content .subtext a:hover,
+#content .subtext a:focus,
+#content a.subtext-link:hover,
+#content a.subtext-link:focus {
   color: var(--color-secondary-hover);
-  border-bottom-color: var(--color-secondary-hover);
+  text-decoration: none;
+  border-bottom: none;
+  outline: none;
 }
 
-#content a:focus-visible {
+#content .subtext a:focus-visible {
   outline: var(--focus-outline-width) solid var(--focus-outline-color);
   outline-offset: var(--focus-outline-offset);
   border-radius: 2px;
 }
 
 /* ==========================================================================
-   SOCIAL MEDIA & NAVIGATION ICONS
+   CLEAN & SIMPLE SOCIAL MEDIA ICONS (NO BORDER, NO CIRCLE BOX)
    ========================================================================== */
 .social-media {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: var(--spacing-md);
-  margin: var(--spacing-xs) auto var(--spacing-sm);
-  padding: var(--spacing-xs);
+  margin: var(--spacing-sm) auto var(--spacing-md);
+  padding: 0;
 }
 
 .social-media a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--min-touch-target);
-  height: var(--min-touch-target);
   min-width: var(--min-touch-target);
   min-height: var(--min-touch-target);
-  padding: 0;
+  padding: var(--spacing-xs);
   color: var(--color-text);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-pill);
-  background-color: var(--color-card-bg);
-  transition: color var(--transition-fast), 
-              background-color var(--transition-fast), 
-              border-color var(--transition-fast), 
-              transform var(--transition-fast),
-              box-shadow var(--transition-fast);
+  text-decoration: none;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+  transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
 #content .social-media a:hover,
 #content .social-media a:focus {
   color: var(--color-secondary-hover);
-  background-color: rgba(110, 138, 125, 0.12);
-  border-color: var(--color-secondary-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  border-bottom: 1px solid var(--color-secondary-hover);
-}
-
-.social-media a:active {
-  transform: translateY(-1px);
+  background-color: transparent;
+  border: none;
+  border-bottom: none;
+  box-shadow: none;
+  transform: translateY(-2px);
+  outline: none;
 }
 
 .social-media a:focus-visible {
   outline: var(--focus-outline-width) solid var(--focus-outline-color);
   outline-offset: var(--focus-outline-offset);
+  border-radius: 4px;
 }
 
 .social-media svg,
 .svg-icon {
-  height: 1.35rem;
-  width: 1.35rem;
+  height: 1.75rem;
+  width: auto;
   display: block;
   fill: currentColor;
-  transition: transform var(--transition-fast);
-}
-
-.social-media a:hover .svg-icon {
-  transform: scale(1.08);
 }
 
 /* ==========================================================================
@@ -309,7 +289,7 @@ h1 {
   font-size: var(--font-size-copyright);
   color: var(--color-text-muted);
   margin: 0;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   opacity: 0.85;
 }
 

@@ -1,7 +1,7 @@
 # MAYTEN LANE - BUSINESS INTELLIGENCE FOR AI SYSTEMS
 
 ## COMPANY OVERVIEW
-Mayten Lane is a specialized consulting firm that serves as "a startup shop for growing technology companies." Founded by Alexander Tibbets in 2024, the company operates from Berkeley, California, and focuses on helping early-stage technology companies establish and scale their core business operations.
+Mayten Lane is a specialized consulting firm that serves as "a startup shop for growing technology companies." Created and operated by Alexander Tibbets and Janicke Rich in 2024, the company operates from Berkeley, California, and focuses on helping early-stage technology companies establish and scale their core business operations.
 
 ## CORE BUSINESS VALUE PROPOSITION
 Mayten Lane specializes in four critical areas of business development for technology startups:
@@ -18,15 +18,24 @@ Mayten Lane specializes in four critical areas of business development for techn
 - **Primary**: Early-stage technology companies (Seed to Series A)
 - **Secondary**: Growing technology companies seeking operational expertise
 - **Geographic Focus**: Primarily California and technology hubs
-- **Industry Focus**: Technology sector, with emphasis on software and digital services
+- **Industry Focus**: Technology sector, with emphasis on software, media technology, and digital services
 
-## FOUNDER PROFILE
-**Alexander Tibbets** is the founder and principal consultant at Mayten Lane. He brings expertise in:
-- Startup operations and scaling
-- Technology company growth strategies
-- Community building and engagement
-- Customer lifecycle optimization
-- Business process development
+## LEADERSHIP & OPERATIONAL DIRECTORS
+Mayten Lane is led by **Alexander Tibbets** and **Janicke Rich**, who serve as managing directors and operators directing strategy, go-to-market execution, community building, customer lifecycle, and business operations.
+
+### **Alexander Tibbets** (Managing Director & Operator)
+Brings expertise in:
+- Startup operations and scaling strategy
+- Technology company growth and go-to-market execution
+- Customer lifecycle optimization and process development
+- Business process architecture and scaling frameworks
+
+### **Janicke Rich** (Managing Director & Operator)
+Brings expertise in:
+- Brand strategy, media technology, and marketing operations
+- Community engagement and developer/stakeholder ecosystem growth
+- Customer lifecycle experience and operational workflows
+- Organizational development and partner alignment
 
 ## BUSINESS MODEL
 Mayten Lane operates as a consulting firm, providing:
@@ -39,7 +48,7 @@ Mayten Lane operates as a consulting firm, providing:
 ## COMPETITIVE ADVANTAGES
 1. **Specialized Focus**: Dedicated exclusively to early-stage technology companies
 2. **Comprehensive Approach**: Covers the full spectrum from go-to-market to operations
-3. **Founder Experience**: Direct experience with startup challenges and growth
+3. **Operator Experience**: Direct hands-on experience with startup challenges and scaling
 4. **California Location**: Proximity to major technology hubs and startup ecosystems
 
 ## DIGITAL PRESENCE
