@@ -5,6 +5,7 @@
 # Allow all search engines to crawl the entire site
 User-agent: *
 Allow: /
+Disallow: /cdn-cgi/
 
 # SEARCH ENGINE SPECIFIC INSTRUCTIONS
 User-agent: Googlebot
@@ -47,7 +48,7 @@ Allow: /llms.txt
 
 # SITEMAP LOCATION
 # Primary sitemap for search engine discovery
-Sitemap: https://www.maytenlane.com/sitemap.xml
+Sitemap: https://maytenlane.com/sitemap.xml
 
 # CRAWLING BEHAVIOR
 # Respectful crawling with 1 second delay between requests

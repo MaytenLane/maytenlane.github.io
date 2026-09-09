@@ -4,13 +4,13 @@
 # Enable rewrite engine for URL redirections
 RewriteEngine On
 
+# Force www to non-www (apex) redirection
+RewriteCond %{HTTP_HOST} ^www\.(.+) [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
 # Force HTTPS redirection for all traffic
 RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# Force www redirection for consistent branding
-RewriteCond %{HTTP_HOST} !^www\. [NC]
-RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
 # Remove trailing slashes for clean URLs
 RewriteCond %{REQUEST_FILENAME} !-d

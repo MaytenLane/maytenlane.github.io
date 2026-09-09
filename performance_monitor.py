@@ -24,7 +24,7 @@ except ImportError:
     pass
 
 # Configuration Constants
-WEBSITE_URL = "https://www.maytenlane.com"
+WEBSITE_URL = "https://maytenlane.com"
 OUTPUT_FILE = "performance_metrics.csv"
 
 # Performance Thresholds
