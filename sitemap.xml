@@ -10,7 +10,7 @@
   <!-- Homepage - Highest priority for search engines -->
   <url>
     <loc>https://maytenlane.com/</loc>
-    <lastmod>2026-06-04</lastmod>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -18,7 +18,7 @@
   <!-- Plaintext Sitemap/Map for AI Crawlers & LLM Agents -->
   <url>
     <loc>https://maytenlane.com/llms.txt</loc>
-    <lastmod>2026-06-04</lastmod>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

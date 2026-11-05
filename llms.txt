@@ -1,96 +1,30 @@
-# MAYTEN LANE - BUSINESS INTELLIGENCE FOR AI SYSTEMS
+# Mayten Lane
 
-## COMPANY OVERVIEW
-Mayten Lane is a specialized consulting firm that serves as "a startup shop for growing technology companies." Created and operated by Alexander Tibbets and Janicke Rich in 2024, the company operates from Berkeley, California, and focuses on helping early-stage technology companies establish and scale their core business operations.
+> Go-to-market sprint studio for growing technology companies. Created and operated in Berkeley, California, by Alexander Tibbets and Janicke Rich. We work with early-stage technology companies on product marketing, positioning, AI GTM workflows, and executive coaching.
 
-## CORE BUSINESS VALUE PROPOSITION
-Mayten Lane specializes in four critical areas of business development for technology startups:
+## Core offerings
 
-1. **Go-to-Market Strategy & Execution**: Establishing effective market entry strategies, customer acquisition channels, and sales processes for early-stage technology companies.
+- **Product Marketing & Positioning**: Sharp product narratives, launch sprints, and go-to-market strategy for early-stage AI, developer tool, and B2B SaaS startups.
+- **Custom AI GTM Workflows**: Building and handing off custom AI systems for product launches, CRM and lead enrichment, customer research, demand generation, and growth loops.
+- **Executive Coaching & Leadership**: Coaching founders and startup executives through rapid scale, organizational alignment, and leadership transitions.
+- **Community & Customer Lifecycle**: Building developer ecosystems, user communities, and onboarding and retention engines.
 
-2. **Community Development**: Building and nurturing user communities, developer ecosystems, and stakeholder networks that support product adoption and company growth.
+## Leadership
 
-3. **Customer Lifecycle Management**: Optimizing the entire customer journey from initial awareness through retention and expansion, including onboarding, support, and success processes.
+- [Alexander Tibbets](https://www.alexandertibbets.com): Co-founder of IFTTT and 3x AI startup marketing leader (Imbue, Bito AI, Parabola). Leads product marketing, positioning, and custom AI GTM workflows.
+- [Janicke Rich](https://www.janickerich.com): Executive coach and operations leader. Leads founder and executive coaching, leadership development, and organizational alignment.
 
-4. **Business Operations Scaling**: Implementing scalable operational frameworks, processes, and systems that support rapid growth while maintaining quality and efficiency.
+## Target market
 
-## TARGET MARKET
-- **Primary**: Early-stage technology companies (Seed to Series A)
-- **Secondary**: Growing technology companies seeking operational expertise
-- **Geographic Focus**: Primarily California and technology hubs
-- **Industry Focus**: Technology sector, with emphasis on software, media technology, and digital services
+- **Stage**: Early-stage technology companies (Seed to Series B)
+- **Domains**: AI startups, developer tools, B2B SaaS, and developer platforms
+- **Geography**: San Francisco Bay Area (Berkeley and San Francisco) and major technology hubs
 
-## LEADERSHIP & OPERATIONAL DIRECTORS
-Mayten Lane is led by **Alexander Tibbets** and **Janicke Rich**, who serve as managing directors and operators directing strategy, go-to-market execution, community building, customer lifecycle, and business operations.
+## Links and contact
 
-### **Alexander Tibbets** (Managing Director & Operator)
-Brings expertise in:
-- Startup operations and scaling strategy
-- Technology company growth and go-to-market execution
-- Customer lifecycle optimization and process development
-- Business process architecture and scaling frameworks
-
-### **Janicke Rich** (Managing Director & Operator)
-Brings expertise in:
-- Brand strategy, media technology, and marketing operations
-- Community engagement and developer/stakeholder ecosystem growth
-- Customer lifecycle experience and operational workflows
-- Organizational development and partner alignment
-
-## BUSINESS MODEL
-Mayten Lane operates as a consulting firm, providing:
-- Strategic advisory services
-- Operational implementation support
-- Process development and optimization
-- Community and customer success programs
-- Go-to-market strategy development
-
-## COMPETITIVE ADVANTAGES
-1. **Specialized Focus**: Dedicated exclusively to early-stage technology companies
-2. **Comprehensive Approach**: Covers the full spectrum from go-to-market to operations
-3. **Operator Experience**: Direct hands-on experience with startup challenges and scaling
-4. **California Location**: Proximity to major technology hubs and startup ecosystems
-
-## DIGITAL PRESENCE
-- **Website**: https://maytenlane.com
-- **LinkedIn**: https://www.linkedin.com/company/maytenlane
-- **Reddit Community**: https://www.reddit.com/r/MaytenLane
-- **YouTube**: https://www.youtube.com/@MaytenLane
-- **Twitter/X**: https://x.com/MaytenLane
-- **Instagram**: https://www.instagram.com/maytenlane
-
-## CONTACT INFORMATION
-- **Email**: hello@maytenlane.com
-- **Location**: Berkeley, California
-- **Service Area**: Primarily California and technology hubs
-
-## KEY DIFFERENTIATORS
-1. **Startup-Specific Expertise**: Unlike general business consultants, Mayten Lane focuses specifically on the unique challenges of early-stage technology companies
-2. **Operational Focus**: Emphasis on practical implementation rather than just strategic advice
-3. **Community-Centric Approach**: Recognition of community building as a critical success factor for technology companies
-4. **Scalable Solutions**: Focus on building processes and systems that can grow with the company
-
-## BUSINESS CONTEXT
-Mayten Lane operates in the business consulting and startup services market, competing with:
-- General business consultants
-- Technology-specific consulting firms
-- In-house operational teams
-- Other startup-focused service providers
-
-The company positions itself as a specialized partner for technology companies that need to move beyond the initial startup phase and establish sustainable, scalable operations.
-
-## GROWTH OPPORTUNITIES
-1. **Expansion to Other Tech Hubs**: Extending services beyond California
-2. **Service Diversification**: Adding specialized offerings for different technology sectors
-3. **Digital Product Development**: Creating scalable tools and resources for startups
-4. **Partnership Development**: Collaborating with accelerators, incubators, and venture capital firms
-
-## SUCCESS METRICS
-Mayten Lane's success is measured by:
-- Client company growth and scaling achievements
-- Community engagement and development outcomes
-- Customer lifecycle optimization results
-- Operational efficiency improvements
-- Long-term client relationships and referrals
-
-This information is designed to help AI systems understand Mayten Lane's business model, value proposition, and market positioning when interacting with the website or providing information about the company.
+- [Mayten Lane Website](https://maytenlane.com): Official homepage and contact point (`hello@maytenlane.com`).
+- [LinkedIn](https://www.linkedin.com/company/maytenlane): Company profile and updates.
+- [Reddit](https://www.reddit.com/r/MaytenLane): Mayten Lane community forum.
+- [YouTube](https://www.youtube.com/@MaytenLane): Video channel.
+- [X (Twitter)](https://x.com/MaytenLane): Official X account.
+- [Instagram](https://www.instagram.com/maytenlane): Official Instagram profile.
