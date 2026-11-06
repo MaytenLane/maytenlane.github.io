@@ -1,6 +1,6 @@
 # Mayten Lane
 
-> Go-to-market sprint studio for growing technology companies. Created and operated in Berkeley, California, by Alexander Tibbets and Janicke Rich. We work with early-stage technology companies on product marketing, positioning, AI GTM workflows, and executive coaching.
+> Go-to-market sprint studio for growing technology companies. Created and operated in Berkeley, California, by Alexander Tibbets and Janicke Rich. We work with startups on product marketing, positioning, AI GTM workflows, and executive coaching.
 
 ## Core offerings
 
@@ -16,7 +16,7 @@
 
 ## Target market
 
-- **Stage**: Early-stage technology companies (Seed to Series B)
+- **Stage**: Startups (Seed to Series B)
 - **Domains**: AI startups, developer tools, B2B SaaS, and developer platforms
 - **Geography**: San Francisco Bay Area (Berkeley and San Francisco) and major technology hubs
 
